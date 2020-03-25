@@ -1,0 +1,15 @@
+$theme-colors: (
+  "primary": #508593,
+  "secondary": #f2d2ec,
+  "info": #544f63,
+  "light": #eeeeee,
+  "dark": #121214,
+);
+
+$enable-rounded: false;
+
+*{
+  font-family: 'Montserrat', sans-serif;
+}
+
+@import '~bootstrap/scss/bootstrap.scss';
