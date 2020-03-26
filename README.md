@@ -25,6 +25,7 @@ Stronka odświeża się po byle jakiej edycji plików, errory mozna zobaczyc w k
 
     /public/ - metadane, ikonka itd. pierdoły generalnie.
     /src/index.js - javascriptowy poczatek programu, main.
+    /src/App.js - nie jestem pewny jeszcze, ale to bedzie nasz glowny plik w którym     bedziemy podmieniac widoki i componenty.
     /src/components/ - folder na komponenty reactowe.
-    /src/customBootstrapTheme.scss - plik nadpisujacy bootstrapa(potem trzeba zrobic refactor i usunac nie uzywane moduly bo aktualnie importujemy calego bootstrapa)
-    /src/components/app - przykład komponentu
+    /src/views/ - folder z widokami tzn. stronki poszczególne typu strona główna.
+    /src/glopalTheme.scss - plik nadpisujacy bootstrapa(potem trzeba zrobic refactor i usunac nie uzywane moduly bo aktualnie importujemy calego bootstrapa)
