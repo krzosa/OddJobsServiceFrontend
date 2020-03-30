@@ -6,9 +6,9 @@ class Registration extends Component{
             <div className="container">
                 <div className="form-check">
                     <div class="col-12 text-center my-5" >
-                        <button class="btn btn-info btn-lg" type="submit"> Zaloguj się </button>
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                        <button class="btn btn-info btn-lg" type="submit"> Rejestracja </button>
+                        <button class="btn btn-info btn-lg mx-2" type="submit"> Zaloguj się </button>
+                        
+                        <button class="btn btn-info btn-lg mx-2" type="submit" disabled> Rejestracja </button>
                     
                     </div>
                     <div class="form-group col-12 my-3 text-center mb-4">
@@ -25,7 +25,7 @@ class Registration extends Component{
                         <label class="form-check-label col-8 col-md-6 col-lg-4" for="przykladowyCheckbox">Oświadczam że znam i akceptuję postanowienia Regulaminu.</label>
                     </div>
                     <div class="col-12 text-center" >
-                    <button type="submit" class="btn btn-primary col-8 col-md-6 col-lg-4">Zarejestruj się</button>
+                    <button type="submit" class="btn btn-primary col-8 col-md-6 col-lg-4 mb-5 ">Zarejestruj się</button>
                     </div>
                 </div>
             </div>
