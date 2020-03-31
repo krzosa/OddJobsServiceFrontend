@@ -1,5 +1,6 @@
 import Navbar from './components/navbar/Navbar'
 import Body from './views/test-page/Body'
+import Registration from './views/Registration';
 import React from 'react';
 import './App.scss';
 
@@ -7,7 +8,6 @@ import './App.scss';
 import { Switch, Route } from 'react-router-dom';
 // Import Pages
 import Offers from './views/Offers/Offers';
-
 
 function App() {
   return (
