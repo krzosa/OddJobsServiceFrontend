@@ -8,15 +8,19 @@ import './App.scss';
 import { Switch, Route } from 'react-router-dom';
 // Import Pages
 import Offers from './views/Offers/Offers';
+import About from './views/about/About';
 
 function App() {
   return (
     <div className="bg-light App">
       <Navbar />
+    
       <Switch>
         <Route exact path="/" component={Body} />
         <Route path="/praca" component={Offers} />
         <Route path="/rejestracja" component={Registration} />
+        <Route path="/about" component={About} />
+
       </Switch>
     </div>
   );

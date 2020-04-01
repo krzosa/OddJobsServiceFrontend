@@ -16,6 +16,7 @@ class Navbar extends Component{
                       </li>
                   </ul>
                   <span className="navbar-nav">
+                      <Link className="nav-link nav-right" to="about">O nas</Link>
                       <Link className="nav-link nav-right" to="rejestracja">Moje konto</Link>
                       <Link className="nav-link nav-right" to="rejestracja">Dodaj ogłoszenie</Link>
                   </span>
