@@ -1,0 +1,11 @@
+.navbar-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    .nav-right{
+        margin-left: 1rem;
+    }
+    .nav-center{
+        margin-left: 10.5rem;
+    }
+}

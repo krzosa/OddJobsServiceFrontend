@@ -6,9 +6,9 @@ class Body extends Component{
         return(
             <div className="page">
                 <div className="menu">
-                    <button className="btn btn-light" onClick={MEMESACTIVATED}>Wszystko OK</button>
-                    <button className="btn btn-secondary" onClick={BIGMEMES}>NO I ZAJEBISCIE</button>
-                    <button className="btn btn-primary" onClick={MEMESSUPREME}>MEMY DEFINUJA ZYCIE</button>
+                    <button className="btn btn-light" onClick={MEMESACTIVATED}>Test 1</button>
+                    <button className="btn btn-secondary" onClick={BIGMEMES}>Test page</button>
+                    <button className="btn btn-primary" onClick={MEMESSUPREME}>Test 2</button>
                 </div>
                 <div className="img"></div> 
                 
