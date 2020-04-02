@@ -1,3 +1,5 @@
+Aktualny stan stronki: http://94.130.72.113:3000
+
 ## Wymagania
     nodejs
     yarn
