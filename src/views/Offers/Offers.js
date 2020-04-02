@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Frame from './Frame';
 import Pagination from './Pagination';
+import "./Offers.scss"
  
 class Offers extends Component {
   render() {
