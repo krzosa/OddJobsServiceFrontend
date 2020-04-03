@@ -5,6 +5,7 @@ import './App.scss';
 import { Switch, Route } from 'react-router-dom';
 // Import Components
 import Navbar from './components/navbar/Navbar'
+import Footer from './components/footer/Footer';
 // Import Pages
 import Registration from './views/Registration';
 import Offers from './views/Offers/Offers';
@@ -22,6 +23,8 @@ function App() {
         <Route path="/rejestracja" component={Registration} />
         <Route path="/about" component={About} />
       </Switch>
+
+      <Footer />
     </div>
   );
 }
