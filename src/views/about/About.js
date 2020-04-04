@@ -23,23 +23,20 @@ class About extends Component {
             </div>
             <h2>Zobacz najciekawsze oferty</h2>
             <div className="row">
-                <div class="col">Oferta 1
+                <div className="col">Oferta 1
                     <p>wefsdfwef<br></br>sdfwefwefsdfwe<br></br>fdsfsfsd</p>
                 </div>
-                <div class="col">Oferta 2
+                <div className="col">Oferta 2
                     <p>wefsdfwef<br></br>sdfwefwefsdfwe<br></br>fdsfsfsd</p>
                 </div>
-                <div class="col">Oferta 3
+                <div className="col">Oferta 3
                     <p>wefsdfwef<br></br>sdfwefwefsdfwe<br></br>fdsfsfsd</p>
                 </div>
             </div>
-
             <div className="row">
-                <div class="col">
+                <div className="col">
                     <h2><Link to="rejestracja">...lub dodaj własną</Link></h2>
                 </div>
-                
-
             </div>
         </div>
       );

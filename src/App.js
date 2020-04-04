@@ -7,7 +7,7 @@ import { Switch, Route } from 'react-router-dom';
 import Navbar from './components/navbar/Navbar'
 import Footer from './components/footer/Footer';
 // Import Pages
-import Registration from './views/Registration';
+import Registration from './views/registration/Registration';
 import Offers from './views/Offers/Offers';
 import Body from './views/test-page/Body'
 import About from './views/about/About';
