@@ -42,10 +42,27 @@ class Footer extends Component {
               </ul>
             </div>
             {/* Footer Date */}
-            <div className="footer-bottom">
+            <div className="col-12 col-sm-5">
+              <div className="footer-bottom">
                 <p className="text-xs-center">
-                    {new Date().getDay()}.{new Date().getMonth()}.{new Date().getFullYear()}  Current date 
+                  &copy; {new Date().getDay()}.{new Date().getMonth()}.
+                  {new Date().getFullYear()} Current date
                 </p>
+              </div>
+            </div>
+            <div className="col-1">
+              <i className="fab fa-twitter" />
+            </div>
+            <div className="col-1">
+              <i className="fab fa-facebook-f" />
+            </div>
+            <div className="col-1">
+              <a
+                href="https://www.instagram.com/eryk.it/"
+                style={{ color: "white" }}
+              >
+                <i class="fab fa-instagram" />
+              </a>
             </div>
           </div>
         </div>
