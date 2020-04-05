@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Frame from './Frame';
-import Pagination from './Pagination';
- 
+import Pagination from "./Pagination";
+
 class Offers extends Component {
   render() {
     return (
@@ -158,12 +158,11 @@ class Offers extends Component {
             </div>
           </div>
         </form>
-        <Frame />
-        <Frame />
+         <Frame />
         <Pagination />
       </div>
     );
   }
 }
- 
+
 export default Offers;
