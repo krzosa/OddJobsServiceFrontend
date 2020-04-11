@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import IMG from './images/allegro.jpg'
+import IMG from './images/allegro.jpg' 
 
 class Frame extends Component {
   render() {
@@ -17,7 +17,7 @@ class Frame extends Component {
                 <div className="col-md-8">
                   <div className="card-body">
                     <h4 className="card-title">
-                      <a href="#">{item.jobName}</a>
+                      <a href="/details">{item.jobName}</a>
                     </h4>
                     <h5 className="card-title">
                       <a href="#">{item.companyName}</a>
