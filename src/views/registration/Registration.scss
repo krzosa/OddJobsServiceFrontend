@@ -1,0 +1,9 @@
+.registration-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .checkbox-form{
+        align-self: baseline;
+    }
+}
