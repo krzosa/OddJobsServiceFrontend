@@ -20,10 +20,10 @@ class Body extends Component{
 
 // https://restcountries.eu/rest/v2/name/united
 async function MEMESACTIVATED(){
-    const url = "https://restcountries.eu/rest/v2/name/united"
+    const url = "http://149.156.146.249:60021/users/Siterizer"
     const response = await fetch(url)
     const data = await response.json()
-    console.log(response)
+    console.log(data)
 }
 
 function BIGMEMES(){

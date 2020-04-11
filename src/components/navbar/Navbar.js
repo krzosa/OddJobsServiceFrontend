@@ -10,21 +10,19 @@ class Navbar extends Component{
                 <div className="navbar-header">
                 <Link className="navbar-brand" to="">OddJobs</Link>
                 </div>
-                  <ul className="navbar-nav navbar-default">
-                      <li>
-                          <Link className="nav-link nav-center" to="praca">Oferty pracy</Link>
-                      </li>
-                  </ul>
-                  <span className="navbar-nav">
-                      <Link className="nav-link nav-right" to="about">O nas</Link>
-                      <Link className="nav-link nav-right" to="rejestracja">Moje konto</Link>
-                      <Link className="nav-link nav-right" to="rejestracja">Dodaj ogłoszenie</Link>
-                  </span>
+                <div className="navbar-nav">
+                    <Link className="nav-link ml-5" to="praca">Oferty pracy</Link>
+                    <Link className="nav-link ml-5" to="about">O nas</Link>
+                    <Link className="nav-link ml-5" to="rejestracja">Moje konto</Link>
+                    <Link className="nav-link ml-5" to="rejestracja">Dodaj ogłoszenie</Link>
+                </div>
               </div>
             </nav>
         );
     }
 }
+
+
 
 
 export default Navbar
