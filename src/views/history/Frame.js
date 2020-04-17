@@ -8,10 +8,10 @@ class Frame extends Component {
       <div className="container mt-2 ">
         {data.info.map((item) => (
           <div className="row">
-            <div className="card mb-3 col-10" >
+            <div className="card mb-3 col-100" >
               <div className="row no-gutters">
 
-                <div className="col-md-8">
+                <div className="col-md-100">
                   <div className="card-body">
 
                   <p className="card-text">
