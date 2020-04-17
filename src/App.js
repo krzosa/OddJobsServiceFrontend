@@ -13,6 +13,7 @@ import Body from './views/test-page/Body'
 import About from './views/about/About';
 import Details from './views/Details/Details';
 import HomePage from './views/HomePage/home';
+import EditProfile from './views/EditProfile/editProfile';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/about" component={About} />
         <Route path="/details" component={Details} />
 	      <Route path="/homePage" component={HomePage} />
+        <Route path="/editProfile" component={EditProfile} />
       </Switch>
       <Footer />
     </div>
