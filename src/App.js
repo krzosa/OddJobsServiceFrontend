@@ -12,6 +12,7 @@ import Offers from './views/Offers/Offers';
 import Body from './views/test-page/Body'
 import About from './views/about/About';
 import Details from './views/Details/Details';
+import HomePage from './views/HomePage/home';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/rejestracja" component={Registration} />
         <Route path="/about" component={About} />
         <Route path="/details" component={Details} />
+	      <Route path="/homePage" component={HomePage} />
       </Switch>
       <Footer />
     </div>
