@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import IMG from './images/allegro.jpg' 
 
 class Frame extends Component {
   render() {
