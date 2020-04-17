@@ -22,8 +22,12 @@ class Login extends Component{
                     </div>
 
                     <div className="form-group col-12 my-3 text-center mb-4">
-                        <input type="checkbox" className="form-check-input ml-1" id="przykladowyCheckbox"></input>
-                        <label className="form-check-label col-8 col-md-9 col-lg-4" for="przykladowyCheckbox">Zapamiętaj mnie</label>
+                        <input type="checkbox" className="form-check-input ml-4" id="przykladowyCheckbox"></input>
+                        <label className="form-check-label col-8 col-md-7 col-lg-4" for="przykladowyCheckbox">Zapamiętaj mnie</label>
+                    </div>
+
+                    <div className="col-12 text-center my-5" >
+                        <button className="btn btn-info btn-lg mx-2 col-8 col-md-7 col-lg-4" type="submit"> Zaloguj się </button>
                     </div>
                                       
                 </div>
