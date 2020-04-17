@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Registration extends Component{
     render(){
         return(
-            <div className="container">
+            <div className="container content">
                 <div className="form-check">
                     <div className="col-12 text-center my-5" >
                         <button className="btn btn-info btn-lg mx-2" type="submit"> Zaloguj się </button>
