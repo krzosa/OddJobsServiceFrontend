@@ -16,3 +16,11 @@
 .vertical{
     margin-top:28%;
     }
+
+.space{
+    margin-bottom: 35vh;
+    margin-top: 20vh;
+
+}
+
+.card:hover { transform: scale(1.1); }
