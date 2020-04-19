@@ -1,11 +1,9 @@
-body{
-    margin-top:20px;
-    background:#f8f8f8
-}
+
 
 .test{
-    margin-left: 50vh;
+    
+    /* margin-right: 25vh; */
+
     background: white;
 }
 
-.row{}

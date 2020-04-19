@@ -3,15 +3,15 @@ import "./style.css"
 class EditProfile extends Component{
     render(){
         return(
-          <div className="test center mt-5">
+          <div className="test center">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
-        <div className="container bootstrap snippets">
-          <div className="row">
-            <div className="col-xs-12 col-sm-9">
+        <div className="container bootstrap snippets ">
+          <div className="row ">
+            <div className="col-xs-12 col-sm-9 ">
               <form className="form-horizontal">
                 <div className="panel panel-default">
                   <div className="panel-body text-center">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" className="img-circle profile-avatar" alt="User avatar" />
+                    <img class="align-self-center mt-5" src="https://bootdey.com/img/Content/avatar/avatar6.png" className="img-circle profile-avatar" alt="User avatar" />
                   </div>
                 </div>
                 <div className="panel panel-default">
