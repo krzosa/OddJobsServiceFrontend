@@ -3,27 +3,27 @@ import React, { Component } from "react";
 class AddOffers extends Component{
     render(){
         return(
-            <div className="container" style={{ heigth: "100%" }}>
+            <div className="container content">
               <form>
 
-                  <div class="form-group col-12 col-md-10 col-lg-8">
-                    <label for="jobName" class="mt-2">Nazwa pracy:</label>
-                    <input type="text" class="form-control" id="jobName"></input>
+                  <div className="form-group col-12 col-md-10 col-lg-6">
+                    <label forHtml="jobName" class="mt-2">Nazwa pracy:</label>
+                    <input type="text" className="form-control" id="jobName"></input>
                   </div>
       
-                  <div class="form-group col-12 col-md-10 col-lg-8">
-                    <label for="companyName">Nazwa firmy:</label>
-                    <input type="text" class="form-control" id="companyName"></input>
+                  <div className="form-group col-12 col-md-10 col-lg-6">
+                    <label forHtml="companyName">Nazwa firmy:</label>
+                    <input type="text" className="form-control" id="companyName"></input>
                   </div>
                 
-                <div class="form-group col-12 col-md-10 col-lg-8">
-                  <label for="city">Miasto:</label>
-                  <input type="text" class="form-control" id="city"></input>
+                <div className="form-group col-12 col-md-10 col-lg-6">
+                  <label forHtml="city">Miasto:</label>
+                  <input type="text" className="form-control" id="city"></input>
                 </div>
 
-              <div class="row col-12">
-                <div class="form-group col-6 mt-2">
-                  <label for="type" class="mr-3">Rodzaj umowy:</label>
+              <div className="row pl-3 py-2">
+                <div className="form-group col-6 col-md-5 col-lg-3 ">
+                  <label forHtml="type" className="mr-1">Rodzaj umowy:</label>
                   <select id="typeofcontract">
                     <option value="brak">---</option>
                     <option value="Zlecenie">Zlecenie</option>
@@ -32,8 +32,8 @@ class AddOffers extends Component{
                   </select>
                 </div>
 
-                <div class="form-group col-6 mt-2">
-                  <label for="time" class="mr-3">Wymiar umowy:</label>
+                <div className="form-group col-6 col-md-5 col-lg-3">
+                  <label forHtml="time" className="mr-1">Wymiar umowy:</label>
                   <select id="sizeofcontract">
                     <option value="brak">---</option>
                     <option value="1/2">1/2 etatu</option>
@@ -45,17 +45,17 @@ class AddOffers extends Component{
 
               </div>
 
-                <div class="form-group ml-3">
-                  <label for="description">Opis:</label>
-                  <textarea class="form-control" id="description" rows="4"></textarea>
+                <div className="form-group mx-3">
+                  <label forHtml="description">Opis:</label>
+                  <textarea className="form-control" id="description" rows="4"></textarea>
                 </div>
 
-                <div class="form-group ml-3">
-                  <label for="jpg" class="mr-3">Wybierz zdjęcie: </label>
+                <div className="form-group ml-3">
+                  <label forHtml="jpg" className="mr-3">Wybierz zdjęcie: </label>
                   <input type="file" id="jpg"></input>
                 </div>
-                <div class="col-12 text-center" >
-                  <button type="submit" class="btn btn-primary col-8 col-md-6 col-lg-4 mb-5" style={{ heigth: "1000px" }}>Dodaj oferte</button>
+                <div className="col-12 text-center" >
+                  <button type="submit" className="btn btn-primary col-8 col-md-6 col-lg-4 mb-5" >Dodaj oferte</button>
                 </div>
               </form>
             </div>
