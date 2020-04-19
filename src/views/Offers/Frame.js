@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import IMG from "./images/allegro.jpg";
 
 export const Frame = ({

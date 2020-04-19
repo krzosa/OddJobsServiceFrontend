@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Frame from "./Frame";
 import Pagination from "./Pagination";
 import ContactList from "./ContactList";
 

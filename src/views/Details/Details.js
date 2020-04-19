@@ -8,7 +8,7 @@ class Details extends Component {
         <div className="card mb-6 mt-3">
           <div className="row no-gutters border-bottom">
             <div className="col-md-2">
-              <img src={IMG} class="card-img" alt="..." />
+              <img src={IMG} className="card-img" alt="..." />
             </div>
             <div className="col-md-7 form-group text-center mt-4">
               <h5 className="card-title">
@@ -17,7 +17,7 @@ class Details extends Component {
             </div>
             <div className="border-left">
               <div className="col-md form-group text-center mt-4 ">
-                <i class="fas fa-money-bill-wave">80-90zł brutto/godz.</i>
+                <i className="fas fa-money-bill-wave">80-90zł brutto/godz.</i>
               </div>
             </div>
           </div>
@@ -28,21 +28,21 @@ class Details extends Component {
             </div>
 
             <div className="col-md-3 ml-5">
-              <i class="fas fa-newspaper">Umowa o pracę</i>
+              <i className="fas fa-newspaper">Umowa o pracę</i>
             </div>
 
             <div className="col-md-3 ml-5">
-              <i class="fas fa-chart-line">Praca fizyczna</i>
+              <i className="fas fa-chart-line">Praca fizyczna</i>
             </div>
           </div>
 
           <div className="row no-gutters text-center mt-3 mb-3">
             <div className="col-md-3 ml-5">
-              <i class="fas fa-clock">Pełny etat</i>
+              <i className="fas fa-clock">Pełny etat</i>
             </div>
 
             <div className="col-md-3 ml-5">
-              <i class="fas fa-calendar-alt">Ważna jeszcze 20dni</i>
+              <i className="fas fa-calendar-alt">Ważna jeszcze 20dni</i>
             </div>
           </div>
         </div>
@@ -139,13 +139,13 @@ class Details extends Component {
           <div className="border-bottom">
             <div className="row text-center ">
               <div className="col-4 border-right">
-                <h5><i class="far fa-star" /> Zapisz</h5>
+                <h5><i className="far fa-star" /> Zapisz</h5>
               </div>
               <div className="col-4 border-right">
-                <h5><i class="fas fa-print" /> Drukuj</h5>
+                <h5><i className="fas fa-print" /> Drukuj</h5>
               </div>
               <div className="col-4">
-                <h5><i class="fas fa-share-alt" /> Podziel się</h5>
+                <h5><i className="fas fa-share-alt" /> Podziel się</h5>
               </div>
             </div>
           </div>
