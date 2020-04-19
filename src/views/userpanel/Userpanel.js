@@ -4,7 +4,7 @@ import React, { Component } from "react";
 class Userpanel extends Component {
     render(){
         return(
-        <div className="container">
+        <div className="container content">
             <div className="row">
                 <div className="col-sm-4">
                         <br></br><br></br><br></br>
