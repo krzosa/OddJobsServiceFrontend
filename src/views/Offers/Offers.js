@@ -1,8 +1,18 @@
 import React, { Component } from "react";
-import Frame from './Frame';
 import Pagination from "./Pagination";
+import ContactList from "./ContactList";
 
 class Offers extends Component {
+  state = {
+    contacts: [],
+  };
+
+  componentDidMount() {
+    fetch("https://restcountries.eu/rest/v2/name/united")
+      .then((response) => response.json())
+      .then((json) => this.setState({ contacts: json }));
+  }
+
   render() {
     return (
       <div className="container">
@@ -158,7 +168,7 @@ class Offers extends Component {
             </div>
           </div>
         </form>
-         <Frame />
+        <ContactList contacts={this.state.contacts} />
         <Pagination />
       </div>
     );
