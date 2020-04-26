@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import IMG from './images/allegro.jpg' 
 
 class Frame extends Component {
   render() {
@@ -9,13 +8,18 @@ class Frame extends Component {
       <div className="container mt-2 ">
         {data.info.map((item) => (
           <div className="row">
-            <div className="card mb-3 col-12" style={{ width: "540px" }}>
+            <div className="card mb-3 col-100" >
               <div className="row no-gutters">
-                <div className="col-md-4 mt-2 mb-2">
-                  <img src={item.img} className="card-img" alt={item.jobName} />
-                </div>
-                <div className="col-md-8">
+
+                <div className="col-md-100">
                   <div className="card-body">
+
+                  <p className="card-text">
+                      <small className="text-muted">
+                        {item.commision}
+                      </small>
+                    </p>
+
                     <h4 className="card-title">
                       <a href="/details">{item.jobName}</a>
                     </h4>
