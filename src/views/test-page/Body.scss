@@ -1,0 +1,15 @@
+.page{ 
+    display: flex;
+    .img{
+        flex:7;
+        opacity:0.95;
+        background: url(./img.jpg) no-repeat top center/cover;
+        height: 100vh;
+    }
+    .menu{
+        flex:1;
+        display: flex;
+        justify-content: right;
+        align-items: stretch;
+    }
+}
