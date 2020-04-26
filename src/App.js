@@ -14,6 +14,10 @@ import About from './views/about/About';
 import Details from './views/Details/Details';
 import HomePage from './views/HomePage/home';
 import EditProfile from './views/EditProfile/editProfile';
+import Login from './views/login/Login';
+import History from './views/history/History';
+import Userpanel from './views/userpanel/Userpanel';
+
 
 function App() {
   return (
@@ -24,9 +28,12 @@ function App() {
         <Route path="/praca" component={Offers} />
         <Route path="/rejestracja" component={Registration} />
         <Route path="/about" component={About} />
+        <Route path="/login" component={Login} />
+        <Route path="/history" component={History} />
         <Route path="/details" component={Details} />
 	      <Route path="/homePage" component={HomePage} />
         <Route path="/editProfile" component={EditProfile} />
+        <Route path="/userpanel" component={Userpanel} />
       </Switch>
       <Footer />
     </div>

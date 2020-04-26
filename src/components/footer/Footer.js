@@ -61,7 +61,7 @@ class Footer extends Component {
                 href="https://www.instagram.com/eryk.it/"
                 style={{ color: "white" }}
               >
-                <i class="fab fa-instagram" />
+                <i className="fab fa-instagram" />
               </a>
             </div>
           </div>
