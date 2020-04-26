@@ -17,6 +17,7 @@ import EditProfile from './views/EditProfile/editProfile';
 import Login from './views/login/Login';
 import History from './views/history/History';
 import Userpanel from './views/userpanel/Userpanel';
+import AddOffers from './views/AddOffers/AddOffers';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
 	      <Route path="/homePage" component={HomePage} />
         <Route path="/editProfile" component={EditProfile} />
         <Route path="/userpanel" component={Userpanel} />
+        <Route path="/addoffers" component={AddOffers} />
       </Switch>
       <Footer />
     </div>
