@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 class About extends Component {
     render() {
       return (
-        <div className="container content">
-            <h1>tutaj jakies img? nie mam pomyslu</h1>
+        <div className="container content mb-5 mt-4">
             <div className="row">
                 <div className="col-sm-8">
                     <h1>Co robimy?</h1>
@@ -23,14 +22,35 @@ class About extends Component {
             </div>
             <h2>Zobacz najciekawsze oferty</h2>
             <div className="row">
-                <div className="col">Oferta 1
-                    <p>wefsdfwef<br></br>sdfwefwefsdfwe<br></br>fdsfsfsd</p>
+                <div className="col">
+                    <div className="card">
+                        <img className="card-img-top" src="" alt="Card cap"/>
+                        <div className="card-body">
+                            <h5 className="card-title">Card title</h5>
+                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" className="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
                 </div>
-                <div className="col">Oferta 2
-                    <p>wefsdfwef<br></br>sdfwefwefsdfwe<br></br>fdsfsfsd</p>
+                <div className="col">
+                <div className="card">
+                        <img className="card-img-top" src="" alt="Card cap"/>
+                        <div className="card-body">
+                            <h5 className="card-title">Card title</h5>
+                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" className="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
                 </div>
-                <div className="col">Oferta 3
-                    <p>wefsdfwef<br></br>sdfwefwefsdfwe<br></br>fdsfsfsd</p>
+                <div className="col">
+                <div className="card">
+                        <img className="card-img-top" src="" alt="Card cap"/>
+                        <div className="card-body">
+                            <h5 className="card-title">Card title</h5>
+                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" className="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div className="row">
