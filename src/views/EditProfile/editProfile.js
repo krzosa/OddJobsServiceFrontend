@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import "./style.css"
+import "./style.scss"
 class EditProfile extends Component{
     render(){
         return(
           <div className="test center">
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
-        <div className="container bootstrap snippets ">
+        <div className="container bootstrap snippets">
           <div className="row ">
             <div className="col-xs-12 col-sm-9 ">
               <form className="form-horizontal">

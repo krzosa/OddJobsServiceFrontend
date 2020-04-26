@@ -7,9 +7,6 @@
 * (Eryk) ??? 
 
 
-# Planowane widoki
-
-
 # Planowane funkcjonalności
 * Rejestracja, poprawne dodanie użytkownika do bazy danych
 * Dodawanie ofert do bazy danych

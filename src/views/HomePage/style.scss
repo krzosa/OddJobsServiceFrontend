@@ -1,0 +1,24 @@
+
+
+    .homepage .card:hover{
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+
+    .homepage .card {
+        background-color: rgb(80, 133, 147);
+        width: 30vh;
+        height: 30vh;
+        
+    }
+
+    .homepage  .vertical{
+        margin-top:28%;
+    }
+
+    .space{
+        margin-top: 20vh;
+        
+    }
+
+    .homepage  .card:hover { transform: scale(1.1); }

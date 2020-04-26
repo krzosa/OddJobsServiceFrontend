@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import "./style.css"
+import "./style.scss"
 class HomePage extends Component{
     render(){
         return(
-        <div class="space">
+        <div class="space homepage content">
           <div className="container d-flex justify-content-center text-center text-light ">
             <div className="row">
               <div className="col-lg-6 ">

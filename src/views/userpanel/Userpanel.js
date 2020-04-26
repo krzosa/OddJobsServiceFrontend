@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import "./style.scss";
 
 
 class Userpanel extends Component {
     render(){
         return(
-        <div className="container content">
+        <div className="container content userpanel">
             <div className="row">
                 <div className="col-sm-4">
                         <br></br><br></br><br></br>
