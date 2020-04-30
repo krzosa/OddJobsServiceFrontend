@@ -7,8 +7,10 @@ class Navbar extends Component{
         return(
             <nav className="navbar navbar-dark bg-primary">
               <div className="container-fluid" id="navbarText">
-                <div className="navbar-header">
-                <Link className="navbar-brand" to="">OddJobs</Link>
+                <div className="navbar-header col-2">
+                <Link className="navbar-brand" to="">
+                <img className="col-12 pl-0" src={require('./logo_biale.png') } alt=""/>
+                </Link>
                 </div>
                 <div className="navbar-nav">
                     <Link className="nav-link ml-5" to="praca">Oferty pracy</Link>
