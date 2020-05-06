@@ -18,9 +18,11 @@ import Login from './views/login/Login';
 import History from './views/history/History';
 import Userpanel from './views/userpanel/Userpanel';
 import AddOffers from './views/AddOffers/AddOffers';
+import NotFoundPage from './views/NotFoundPage/NotFoundPage'; 
 
 
 function App() {
+
   return (
     <div className="bg-light App">
       <Navbar />
@@ -36,6 +38,7 @@ function App() {
         <Route path="/editProfile" component={EditProfile} />
         <Route path="/userpanel" component={Userpanel} />
         <Route path="/addoffers" component={AddOffers} />
+        <Route component={NotFoundPage} />
       </Switch>
       <Footer />
     </div>
