@@ -66,7 +66,7 @@ class Login extends React.Component {
                 id="username"
                 className="text-center col-8 col-md-6 col-lg-4"
               />
-              <p id="userNameId"></p>
+              <p className="text-danger" id="userNameId"></p>
             </div>
 
             <div className="form-group col-12 my-3 text-center mb-4">
@@ -76,7 +76,7 @@ class Login extends React.Component {
                 id="password"
                 className="text-center col-8 col-md-6 col-lg-4"
               />
-              <p id="passwordId"></p>
+              <p className="text-danger" id="passwordId"></p>
             </div>
 
             <div className="col-12 text-center my-5">

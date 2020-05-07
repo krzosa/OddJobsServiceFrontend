@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+import { FunctionRegistration } from "./FunctionRegistration";
+import { AlertFile } from "./AlertFile";
+
 class Registration extends Component {
   state = {
     email: "",
@@ -10,16 +13,7 @@ class Registration extends Component {
     lastName: "",
     userName: "",
     phoneNumber: "",
-    checked: false,
-    data: "",
-    errorFirstName: "",
-    errorLastName: "",
-    errorUserName: "",
-    errorPhoneNumber: "",
-    errorEmail: "",
-    errorPassword: "",
-    errorPasswordRepeat: "",
-    errorChecked: "",
+    checked: false
   };
 
   hangleChangeEmail = (e) => {
@@ -60,9 +54,16 @@ class Registration extends Component {
     e.preventDefault();
 
     if (
-      this.state.checked == true &&
-      this.state.email != "" &&
-      this.state.password == this.state.passwordRepeat
+      FunctionRegistration(
+        this.state.firstName,
+        this.state.lastName,
+        this.state.userName,
+        this.state.phoneNumber,
+        this.state.email,
+        this.state.password,
+        this.state.passwordRepeat,
+        this.state.checked
+      )
     ) {
       axios
         .post("http://149.156.146.249:60021/api/users/", {
@@ -73,61 +74,18 @@ class Registration extends Component {
           username: this.state.userName,
           phoneNumber: this.state.phoneNumber,
         })
-        .then((res) => this.setState(this.showInfo(res.data)))
+        .then((res) =>
+          AlertFile(
+            res.data,
+            this.state.email,
+            this.state.password,
+            this.state.passwordRepeat,
+            this.state.checked
+          )
+        )
         .catch((err) => console.log(err));
-
-      //czyszczenie komunikatow
-      this.setState({ errorChecked: "" });
-      this.setState({ errorEmail: "" });
-      this.setState({ errorPasswordRepeat: "" });
-    } else if (!this.state.checked)
-      this.setState({ errorChecked: "Zaznacz Checkbox" });
-    else if (this.state.email == "")
-      this.setState({ errorEmail: "Wpisz email" });
-    else if (this.state.password != this.state.passwordRepeat)
-      this.setState({ errorPasswordRepeat: "Niezgodne hasła" });
+    }
   };
-
-  showInfo(data) {
-    //walidacja imienia
-    if (data.includes("firstName is too short"))
-      this.setState({ errorFirstName: "Imie jest za krótkie" });
-    else if (data.includes("firstName is too long"))
-      this.setState({ errorFirstName: "Imie jest za długie" });
-    else if (data.includes("firstName contains illegal character"))
-      this.setState({ errorFirstName: "Nieprawidłowe znaki" });
-    else this.setState({ errorFirstName: "" });
-
-    //walidacja nazwiska
-    if (data.includes("lastName is too short"))
-      this.setState({ errorLastName: "Nazwisko jest za krótkie" });
-    else if (data.includes("lastName is too long"))
-      this.setState({ errorLastName: "Nazwisko jest za długie" });
-    else if (data.includes("lastName contains illegal character"))
-      this.setState({ errorLastName: "Nieprawidłowe znaki" });
-    else this.setState({ errorLastName: "" });
-
-    //walidacja uzytkownika
-    if (data.includes("username is too short"))
-      this.setState({ errorUserName: "Nazwa użytkownika jest za krótka" });
-    else if (data.includes("username is too long"))
-      this.setState({ errorUserName: "Nazwa użytkownika jest za długa" });
-    else this.setState({ errorUserName: "" });
-
-    //walidacja telefonu
-    if (data.includes("phone number too short"))
-      this.setState({ errorPhoneNumber: "Numer telefonu jest za krótki" });
-    else if (data.includes("phone number too long"))
-      this.setState({ errorPhoneNumber: "Numer telefonu jest za długi" });
-    else this.setState({ errorPhoneNumber: "" });
-
-    //walidacja hasła
-    if (data.includes("password is too short"))
-      this.setState({ errorPassword: "Hasło jest za krótkie" });
-    else if (data.includes("password is too long"))
-      this.setState({ errorPassword: "Hasło jest za długie" });
-    else this.setState({ errorPassword: "" });
-  }
 
   render() {
     return (
@@ -151,14 +109,10 @@ class Registration extends Component {
                 type="text"
                 className="text-center col-8 col-md-6 col-lg-4"
                 placeholder="Wpisz Imię"
+                id="firstName"
                 onChange={this.handleChangeFirstName}
               />
-              <p
-                className="form-group col-12 mt-0 mb-0 text-center"
-                onChange={this.showInfo}
-              >
-                {this.state.errorFirstName}
-              </p>
+              <p className="text-danger" id="errorFirstName"></p>
             </div>
 
             <div className="form-group col-12 my-3 text-center mb-4">
@@ -166,14 +120,10 @@ class Registration extends Component {
                 type="text"
                 className="text-center col-8 col-md-6 col-lg-4"
                 placeholder="Wpisz Nazwisko"
+                id="lastName"
                 onChange={this.handleChangeLastName}
               />
-              <p
-                className="form-group col-12 mt-0 mb-0 text-center"
-                onChange={this.showInfo}
-              >
-                {this.state.errorLastName}
-              </p>
+              <p className="text-danger" id="errorLastName"></p>
             </div>
 
             <div className="form-group col-12 my-3 text-center mb-4">
@@ -181,14 +131,10 @@ class Registration extends Component {
                 type="text"
                 className="text-center col-8 col-md-6 col-lg-4"
                 placeholder="Wpisz Nazwę Użytkownika"
+                id="userName"
                 onChange={this.handleChangeUserName}
               />
-              <p
-                className="form-group col-12 mt-0 mb-0 text-center"
-                onChange={this.showInfo}
-              >
-                {this.state.errorUserName}
-              </p>
+              <p className="text-danger" id="errorUserName"></p>
             </div>
 
             <div className="form-group col-12 my-3 text-center mb-4">
@@ -196,62 +142,45 @@ class Registration extends Component {
                 type="text"
                 className="text-center col-8 col-md-6 col-lg-4"
                 placeholder="Wpisz numer telefonu"
+                id="phoneNumber"
                 onChange={this.handleChangePhoneNumber}
               />
-              <p
-                className="form-group col-12 mt-0 mb-0 text-center"
-                onChange={this.showInfo}
-              >
-                {this.state.errorPhoneNumber}
-              </p>
+              <p className="text-danger" id="errorPhoneNumber"></p>
             </div>
 
             <div className="form-group col-12 my-3 text-center mb-4">
               <input
                 type="email"
                 className="text-center col-8 col-md-6 col-lg-4"
-                id="email"
-                placeholder="podpowiedzEmail"
                 placeholder="Wpisz Email"
+                id="email"
                 onChange={this.hangleChangeEmail}
               />
-              <p
-                className="form-group col-12 mt-0 mb-0 text-center"
-                onChange={this.showInfo}
-              >
-                {this.state.errorEmail}
-              </p>
+              <p className="text-danger" id="errorEmail"></p>
             </div>
+
             <div className="form-group col-12 my-3 text-center mb-4">
               <input
                 type="password"
                 className="text-center col-8 col-md-6 col-lg-4"
-                id="pass"
                 placeholder="Wpisz hasło"
+                id="password"
                 onChange={this.handleChangePassword}
               />
-              <p
-                className="form-group col-12 mt-0 mb-0 text-center"
-                onChange={this.showInfo}
-              >
-                {this.state.errorPassword}
-              </p>
+              <p className="text-danger" id="errorPassword"></p>
             </div>
+
             <div className="form-group col-12 my-3 text-center mb-4">
               <input
                 type="password"
                 className="text-center col-8 col-md-6 col-lg-4 "
-                id="pass2"
                 placeholder="Powtórz hasło"
+                id="passwordRepeat"
                 onChange={this.handleChangePasswordRepeat}
               />
-              <p
-                className="form-group col-12 mt-0 mb-0 text-center"
-                onChange={this.showInfo}
-              >
-                {this.state.errorPasswordRepeat}
-              </p>
+              <p className="text-danger" id="errorPasswordRepeat"></p>
             </div>
+
             <div className="form-group col-12 my-3 text-center mb-4">
               <input
                 className="mr-1"
@@ -259,13 +188,9 @@ class Registration extends Component {
                 onChange={this.handleCheckboxChange}
               />
               Oświadczam że znam i akceptuję postanowienia Regulaminu.
-              <p
-                className="form-group col-12 mt-0 mb-0 text-center"
-                onChange={this.showInfo}
-              >
-                {this.state.errorChecked}
-              </p>
+              <p className="text-danger" id="errorChecked"></p>
             </div>
+
             <div className="col-12 text-center">
               <button
                 type="submit"
