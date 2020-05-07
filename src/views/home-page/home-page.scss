@@ -5,11 +5,15 @@
         opacity:0.95;
         background: url(./img.jpg) no-repeat top center/cover;
         height: 100vh;
+        width: 100%;
     }
     .menu{
-        flex:1;
+        flex:5;
         display: flex;
         justify-content: right;
         align-items: stretch;
+        .btn{
+            width: 100%;
+        }
     }
 }
