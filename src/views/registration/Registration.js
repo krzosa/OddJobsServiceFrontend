@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import { FunctionLogin } from "./FunctionLogin";
+import { FunctionRegistration } from "./FunctionRegistration";
 import { AlertFile } from "./AlertFile";
 
 class Registration extends Component {
@@ -54,7 +54,7 @@ class Registration extends Component {
     e.preventDefault();
 
     if (
-      FunctionLogin(
+      FunctionRegistration(
         this.state.firstName,
         this.state.lastName,
         this.state.userName,

@@ -1,4 +1,4 @@
-export function FunctionLogin(
+export function FunctionRegistration(
   firstName,
   lastName,
   userName,
