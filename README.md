@@ -1,1 +1,1 @@
-Aktualny stan stronki: krzosa.com
+Aktualny stan stronki: http://krzosa.com
