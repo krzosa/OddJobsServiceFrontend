@@ -64,6 +64,7 @@ class Login extends React.Component {
                 type="text"
                 onChange={this.hangleChangeName}
                 id="username"
+                placeholder="Wpisz nazwę użytkownika"
                 className="text-center col-8 col-md-6 col-lg-4"
               />
               <p className="text-danger" id="userNameId"></p>
@@ -74,6 +75,7 @@ class Login extends React.Component {
                 type="password"
                 onChange={this.handleChangePassword}
                 id="password"
+                placeholder="Wpisz hasło"
                 className="text-center col-8 col-md-6 col-lg-4"
               />
               <p className="text-danger" id="passwordId"></p>
