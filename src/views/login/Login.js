@@ -85,6 +85,7 @@ class Login extends React.Component {
               <button
                 type="submit"
                 className="btn btn-info btn-lg mx-2 col-8 col-md-7 col-lg-4"
+                id="zal"
               >
                 Zaloguj
               </button>

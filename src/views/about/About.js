@@ -23,7 +23,7 @@ class About extends Component {
             <h2>Zobacz najciekawsze oferty</h2>
             <div className="row">
                 <div className="col">
-                    <div className="card">
+                    <div className="card" id="card1">
                         <img className="card-img-top" src="" alt="Card cap"/>
                         <div className="card-body">
                             <h5 className="card-title">Card title</h5>
@@ -33,7 +33,7 @@ class About extends Component {
                     </div>
                 </div>
                 <div className="col">
-                <div className="card">
+                <div className="card" id="card2">
                         <img className="card-img-top" src="" alt="Card cap"/>
                         <div className="card-body">
                             <h5 className="card-title">Card title</h5>
@@ -43,7 +43,7 @@ class About extends Component {
                     </div>
                 </div>
                 <div className="col">
-                <div className="card">
+                <div className="card" id="card3">
                         <img className="card-img-top" src="" alt="Card cap"/>
                         <div className="card-body">
                             <h5 className="card-title">Card title</h5>
@@ -55,7 +55,7 @@ class About extends Component {
             </div>
             <div className="row">
                 <div className="col">
-                    <h2><Link to="rejestracja">...lub dodaj własną</Link></h2>
+                    <h2 id="dodaj"><Link to="rejestracja">...lub dodaj własną</Link></h2>
                 </div>
             </div>
         </div>
