@@ -92,12 +92,12 @@ class Registration extends Component {
       <div className="container ">
         <div className="form-check">
           <div className="col-12 text-center my-5">
-            <button className="btn btn-info btn-lg mx-2" type="submit">
+            <button className="btn btn-info btn-lg mx-2" type="submit" id="log">
               {" "}
               Zaloguj się{" "}
             </button>
 
-            <button className="btn btn-info btn-lg mx-2" type="submit" disabled>
+            <button className="btn btn-info btn-lg mx-2" type="submit" id="reg" disabled>
               {" "}
               Rejestracja{" "}
             </button>
@@ -195,6 +195,7 @@ class Registration extends Component {
               <button
                 type="submit"
                 className="btn btn-info col-8 col-md-6 col-lg-4 mb-5 "
+                id="zareg"
               >
                 Zarejestruj się
               </button>

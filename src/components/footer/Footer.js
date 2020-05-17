@@ -8,7 +8,7 @@ class Footer extends Component {
           <div className="row text-white">
             {/* Column 1 */}
             <div className="col-md-3 col-sm-6 mt-4">
-              <h4>Dla kandydatów</h4>
+              <h4 id="kan">Dla kandydatów</h4>
               <ul className="list-unstyled">
                 <li>Pomoc</li>
                 <li>Urzędy pracy</li>
@@ -16,7 +16,7 @@ class Footer extends Component {
             </div>
             {/* Column 2 */}
             <div className="col-md-3 col-sm-6 mt-4">
-              <h4>Dla firm</h4>
+              <h4 id="firm">Dla firm</h4>
               <ul className="list-unstyled">
                 <li>Dodaj ogłoszenie</li>
                 <li>Konto pracodawcy</li>
@@ -25,7 +25,7 @@ class Footer extends Component {
             </div>
             {/* Column 3 */}
             <div className="col-md-3 col-sm-6 mt-4">
-              <h4>Grupa Pracuj</h4>
+              <h4 id="grup">Grupa Pracuj</h4>
               <ul className="list-unstyled">
                 <li>O nas</li>
                 <li>Reklama</li>
@@ -34,7 +34,7 @@ class Footer extends Component {
             </div>
             {/* Column 4 */}
             <div className="col-md-3 col-sm-6 mt-4">
-              <h4>Informacje</h4>
+              <h4 id="inform">Informacje</h4>
               <ul className="list-unstyled">
                 <li>Regulamin</li>
                 <li>Polityka prywatności</li>
@@ -58,6 +58,7 @@ class Footer extends Component {
             </div>
             <div className="col-1">
               <a
+                id = "inst"
                 href="https://www.instagram.com/eryk.it/"
                 style={{ color: "white" }}
               >
