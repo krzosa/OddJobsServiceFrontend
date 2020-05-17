@@ -25,7 +25,8 @@
 * (Eryk)Czytanie obiektów opisujących oferty {nazwa: "oferta1", data: "02.2.2"} i renderowanie ofert w spisie ofert na ich podstawie 
 * (Adam)Historia uzytkownika 
 * (Adam)Logowanie widok
-* (Alan)Edytowanie profilu 
+* (Alan)Edytowanie profilu
+* (Alan)Panel wyboru
 * (Jarek)About widok 
 * (Jarek)Profil użytkownika widok
 * (Patryk)Rejestracja widok 
