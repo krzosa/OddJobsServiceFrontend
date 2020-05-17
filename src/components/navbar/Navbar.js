@@ -20,6 +20,7 @@ class Navbar extends Component{
                     <Link className="nav-link ml-5" to="history">Historia</Link>
                     <Link className="nav-link ml-5" to="userpanel">Moje konto</Link>
                     <Link className="nav-link ml-5" to="addoffers">Dodaj ogłoszenie</Link>
+                    <Link className="nav-link ml-5" to="notfoundpage">page not found</Link>
                 </div>
               </div>
             </nav>

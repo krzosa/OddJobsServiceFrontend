@@ -36,7 +36,7 @@ function App() {
         <Route path="/editProfile" component={EditProfile} />
         <Route path="/userpanel" component={Userpanel} />
         <Route path="/addoffers" component={AddOffers} />
-        <Route component={NotFoundPage} />
+        <Route path="/notfoundpage" component={NotFoundPage} />
       </Switch>
       <Footer />
     </div>
