@@ -9,7 +9,7 @@ export const Frame = ({
   timezones,
 }) => {
   return (
-    <div className="container mt-2 ">
+    <div className="container mt-2 " id="offers-frame">
       <div className="row">
         <div className="card mb-3 col-12" style={{ width: "540px" }}>
           <div className="row no-gutters">

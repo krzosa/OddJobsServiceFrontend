@@ -15,7 +15,7 @@ class Offers extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container" id="offers">
         <form>
           <div className="row">
             {/* Stanowisko firma*/}

@@ -3,7 +3,7 @@ import "./style.scss"
 class EditProfile extends Component{
     render(){
         return(
-          <div className="test center">
+      <div className="test center" id="edit-profile">
         <div className="container bootstrap snippets">
           <div className="row ">
             <div className="col-xs-12 col-sm-9 ">

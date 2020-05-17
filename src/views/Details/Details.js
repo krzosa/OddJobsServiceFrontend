@@ -4,7 +4,7 @@ import IMG from "./../Offers/images/allegro.jpg";
 class Details extends Component {
   render() {
     return (
-      <div className="container ">
+      <div className="container " id="details">
         <div className="card mb-6 mt-3">
           <div className="row no-gutters border-bottom">
             <div className="col-md-2">

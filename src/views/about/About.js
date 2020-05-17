@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class About extends Component {
     render() {
       return (
-        <div className="container content mb-5 mt-4">
+        <div className="container content mb-5 mt-4" id="about">
             <div className="row">
                 <div className="col-sm-8">
                     <h1>Co robimy?</h1>
