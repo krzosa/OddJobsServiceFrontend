@@ -9,7 +9,7 @@ class NotFoundPage extends Component {
                 <h1>Oops! Page Not Found</h1>
                     <div class="row justify-content-center">
                         <div class="col-6">                        
-                            <p>Sorry but the page you are looking for does not exist, have been removed. Name changed or is temporarily unavailable</p>
+                            <p>Sorry but the page you are looking for does not exist, have been removed, name changed or is temporarily unavailable</p>
                             {/* <a href="#">Back to homepage</a> */}
                             <a href="#" class="btn btn-primary btn-lg"> <span class="glyphicon glyphicon-arrow-left"></span> back to homepage </a>
                         </div>
