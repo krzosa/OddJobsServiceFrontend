@@ -1,22 +1,67 @@
 import React, { Component } from "react";
+import axios from "axios";
 import Pagination from "./Pagination";
 import ContactList from "./ContactList";
+import { CreateUrl } from './CreateUrl';
 
 class Offers extends Component {
   state = {
     contacts: [],
+    url: "http://149.156.146.249:60021/api/advertisements",
+    city: '',
+    housework: false,
+    animalScare: false,
   };
 
-  componentDidMount() {
-    fetch("https://restcountries.eu/rest/v2/name/united")
-      .then((response) => response.json())
-      .then((json) => this.setState({ contacts: json }));
+  componentDidMount(){
+    axios.get(this.state.url) 
+    .then(json => this.setState({contacts: json.data}))
+    .catch((err) => console.log(err));  
+
+    //alert("Wyszukiwanie działa wyłącznie na: kategorii oraz mieście");
   }
+
+  handleSubmit = (e) =>{
+    e.preventDefault();
+
+    console.log(this.state.housework)
+    let pom = this.state.url + '?';
+    
+    pom += CreateUrl(this.state.city,this.state.housework,this.state.animalScare);
+
+    axios.get(pom) 
+    .then(json => this.setState({contacts: json.data}))
+    .catch((err) => console.log(err));
+    console.log(this.state.contacts);
+    
+  }
+
+
+    //Pobieranie Miasta
+    handleCity = (e) => {
+      this.setState({ city: e.target.value });
+    };
+
+    //houseWork
+    handleHouseWork = (e) => {
+      e.target.checked
+        ? this.setState({ housework: true })
+        : this.setState({ housework: false });
+    };
+
+    //animalscare
+    handleAnimalScare = (e) => {
+      e.target.checked
+      ? this.setState({animalScare: true})
+      : this.setState({animalScare: false});
+    }
+
+ 
 
   render() {
     return (
       <div className="container">
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <div className="row">
             {/* Stanowisko firma*/}
             <div className="col-sm-6 mt-1 col-md-4 col-xl-4">
@@ -33,6 +78,7 @@ class Offers extends Component {
                 type="text"
                 className="form-control"
                 placeholder="Miasto"
+                onChange={this.handleCity}
               />
             </div>
 
@@ -69,16 +115,20 @@ class Offers extends Component {
                   <li>IT</li>
                   <li>
                     <label className="dropdown-menu-item checkbox">
-                      <input type="checkbox" />
+                      <input type="checkbox" 
+                      onChange={this.handleHouseWork}
+                      />
                       <span className="glyphicon glyphicon-unchecked"></span>
-                      Programista
+                      HouseWork
                     </label>
                   </li>
                   <li>
                     <label className="dropdown-menu-item checkbox">
-                      <input type="checkbox" />
+                      <input type="checkbox" 
+                      onChange={this.handleAnimalScare}
+                      />
                       <span className="glyphicon glyphicon-unchecked"></span>
-                      Grafik
+                      AnimalScare
                     </label>
                   </li>
                   <li role="separator" className="divider"></li>
