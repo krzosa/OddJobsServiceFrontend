@@ -1,7 +1,29 @@
 import React, { Component } from "react";
 import IMG from "./../Offers/images/allegro.jpg";
+import axios from "axios";
 
-class Details extends Component {
+export default class Details extends Component {
+  state = {
+    table: "",
+  };
+
+  componentDidMount() {
+    //zmienna która przechowuje adres np. /details/1
+    let urlWithDetailsId = this.props.location.pathname;
+    //zmienna która ucina /details
+    let createUrlWithId;
+
+    //sprawdzenie czy wystepuje tekst "details" jesli tak to tworzy string bez 'details'
+    if (urlWithDetailsId.includes("/details"))
+      createUrlWithId = this.props.location.pathname.substr(8);
+
+    //zapytanie na serwer z okreslonym id oraz uzupelnienie tablicy tym co zwraca
+    axios
+      .get("http://149.156.146.249:60021/api/advertisements" + createUrlWithId)
+      .then((res) => this.setState({ table: res.data }))
+      .catch((err) => console.log(err));
+  }
+
   render() {
     return (
       <div className="container " id="details">
@@ -11,9 +33,7 @@ class Details extends Component {
               <img src={IMG} className="card-img" alt="..." />
             </div>
             <div className="col-md-7 form-group text-center mt-4">
-              <h5 className="card-title">
-                Kierownik Schroniska dla osób bezdomnych z usługami opiekuńczymi
-              </h5>
+              <h5 className="card-title">{this.state.table.title}</h5>
             </div>
             <div className="border-left">
               <div className="col-md form-group text-center mt-4 ">
@@ -24,7 +44,7 @@ class Details extends Component {
 
           <div className="row no-gutters text-center mt-3">
             <div className="col-md-3 ml-5">
-              <i className="fas fa-map-marker-alt">Miejsce</i>
+              <i className="fas fa-map-marker-alt">{this.state.table.city}</i>
             </div>
 
             <div className="col-md-3 ml-5">
@@ -46,7 +66,6 @@ class Details extends Component {
             </div>
           </div>
         </div>
-
         <div className="border-top mt-3">
           <div className="card border-light  no-gutters mb-3 d-flex">
             <div className="card-header text-center  bg-primary text-white ">
@@ -56,52 +75,46 @@ class Details extends Component {
             </div>
             <div className="card-body">
               <h5 className="card-title">Opis stanowiska:</h5>
-              <p className="card-text">
-                <ul>
-                  <li>Praca przy produkcji rozdzielnic</li>
-                  <li>
-                    Budowa i łączenie rozdzielnic i skrzynek elektrycznych,
-                  </li>
-                  <li>
-                    Montaż pulpitów kontrolno-sterowniczych zgodnie z
-                    dokumentacją techniczną, schematami elektrycznymi, oraz
-                    rysunkami gabarytowymi
-                  </li>
-                  <li>Montaż materiałów pomocniczych zgodnie ze schematami,</li>
-                </ul>
-              </p>
+              <p className="card-text" />
+              <ul>
+                <li>Praca przy produkcji rozdzielnic</li>
+                <li>Budowa i łączenie rozdzielnic i skrzynek elektrycznych,</li>
+                <li>
+                  Montaż pulpitów kontrolno-sterowniczych zgodnie z dokumentacją
+                  techniczną, schematami elektrycznymi, oraz rysunkami
+                  gabarytowymi
+                </li>
+                <li>Montaż materiałów pomocniczych zgodnie ze schematami,</li>
+              </ul>
               <h5 className="card-title">Wymagania</h5>
-              <p className="card-text">
-                <ul>
-                  <li>Wykształcenie kierunkowe,</li>
-                  <li>
-                    Doświadczenie w pracy na stanowisku prefabrykacji szaf i
-                    pulpitów sterowniczych oraz rozdzielnic elektrycznychjest
-                    konieczne{" "}
-                  </li>
-                  <li>Umiejętność czytania schematów elektrycznych,</li>
-                  <li>
-                    Komunikatywna znajomość języka angielskiego jest wymagana,
-                  </li>
-                </ul>
-              </p>
+              <p className="card-text" />
+              <ul>
+                <li>Wykształcenie kierunkowe,</li>
+                <li>
+                  Doświadczenie w pracy na stanowisku prefabrykacji szaf i
+                  pulpitów sterowniczych oraz rozdzielnic elektrycznychjest
+                  konieczne{" "}
+                </li>
+                <li>Umiejętność czytania schematów elektrycznych,</li>
+                <li>
+                  Komunikatywna znajomość języka angielskiego jest wymagana,
+                </li>
+              </ul>
               <h5 className="card-title">Oferujemy</h5>
-              <p className="card-text">
-                <ul>
-                  <li>
-                    Oferujemy atrakcyjne zarobki w wysokości € 20.00 na godzinę{" "}
-                  </li>
-                  <li>Od 40 do 50 godzin tygodniowo </li>
-                  <li>
-                    Odbiór z lotniska i pomoc w zakwaterowaniu oraz we
-                    wszystkich sprawach administracyjnych,{" "}
-                  </li>
-                  <li>
-                    Ciekawą pracę w projektach dla międzynarodowych
-                    kontrahentów,
-                  </li>
-                </ul>
-              </p>
+              <p className="card-text" />
+              <ul>
+                <li>
+                  Oferujemy atrakcyjne zarobki w wysokości € 20.00 na godzinę{" "}
+                </li>
+                <li>Od 40 do 50 godzin tygodniowo </li>
+                <li>
+                  Odbiór z lotniska i pomoc w zakwaterowaniu oraz we wszystkich
+                  sprawach administracyjnych,{" "}
+                </li>
+                <li>
+                  Ciekawą pracę w projektach dla międzynarodowych kontrahentów,
+                </li>
+              </ul>
               Osoby zainteresowane prosimy o przesyłanie aplikacji klikając w
               przycisk aplikowania.
               <br />
@@ -125,7 +138,6 @@ class Details extends Component {
             </div>
           </div>
         </div>
-
         <div className="card border-light mb-5">
           <div className="card-body text-center  border-bottom">
             <button
@@ -139,13 +151,19 @@ class Details extends Component {
           <div className="border-bottom">
             <div className="row text-center ">
               <div className="col-4 border-right">
-                <h5><i className="far fa-star" /> Zapisz</h5>
+                <h5>
+                  <i className="far fa-star" /> Zapisz
+                </h5>
               </div>
               <div className="col-4 border-right">
-                <h5><i className="fas fa-print" /> Drukuj</h5>
+                <h5>
+                  <i className="fas fa-print" /> Drukuj
+                </h5>
               </div>
               <div className="col-4">
-                <h5><i className="fas fa-share-alt" /> Podziel się</h5>
+                <h5>
+                  <i className="fas fa-share-alt" /> Podziel się
+                </h5>
               </div>
             </div>
           </div>
@@ -162,5 +180,3 @@ class Details extends Component {
     );
   }
 }
-
-export default Details;
