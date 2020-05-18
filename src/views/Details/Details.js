@@ -26,7 +26,7 @@ export default class Details extends Component {
 
   render() {
     return (
-      <div className="container ">
+      <div className="container " id="details">
         <div className="card mb-6 mt-3">
           <div className="row no-gutters border-bottom">
             <div className="col-md-2">
@@ -66,7 +66,6 @@ export default class Details extends Component {
             </div>
           </div>
         </div>
-
         <div className="border-top mt-3">
           <div className="card border-light  no-gutters mb-3 d-flex">
             <div className="card-header text-center  bg-primary text-white ">
@@ -139,7 +138,6 @@ export default class Details extends Component {
             </div>
           </div>
         </div>
-
         <div className="card border-light mb-5">
           <div className="card-body text-center  border-bottom">
             <button

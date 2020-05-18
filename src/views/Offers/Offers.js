@@ -2,65 +2,67 @@ import React, { Component } from "react";
 import axios from "axios";
 import Pagination from "./Pagination";
 import ContactList from "./ContactList";
-import { CreateUrl } from './CreateUrl';
+import { CreateUrl } from "./CreateUrl";
 
 class Offers extends Component {
   state = {
     contacts: [],
     url: "http://149.156.146.249:60021/api/advertisements",
-    city: '',
+    city: "",
     housework: false,
     animalScare: false,
   };
 
-  componentDidMount(){
-    axios.get(this.state.url) 
-    .then(json => this.setState({contacts: json.data}))
-    .catch((err) => console.log(err));  
+  componentDidMount() {
+    axios
+      .get(this.state.url)
+      .then((json) => this.setState({ contacts: json.data }))
+      .catch((err) => console.log(err));
 
     //alert("Wyszukiwanie działa wyłącznie na: kategorii oraz mieście");
   }
 
-  handleSubmit = (e) =>{
+  handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(this.state.housework)
-    let pom = this.state.url + '?';
-    
-    pom += CreateUrl(this.state.city,this.state.housework,this.state.animalScare);
+    console.log(this.state.housework);
+    let pom = this.state.url + "?";
 
-    axios.get(pom) 
-    .then(json => this.setState({contacts: json.data}))
-    .catch((err) => console.log(err));
+    pom += CreateUrl(
+      this.state.city,
+      this.state.housework,
+      this.state.animalScare
+    );
+
+    axios
+      .get(pom)
+      .then((json) => this.setState({ contacts: json.data }))
+      .catch((err) => console.log(err));
     console.log(this.state.contacts);
-    
-  }
+  };
 
+  //Pobieranie Miasta
+  handleCity = (e) => {
+    this.setState({ city: e.target.value });
+  };
 
-    //Pobieranie Miasta
-    handleCity = (e) => {
-      this.setState({ city: e.target.value });
-    };
+  //houseWork
+  handleHouseWork = (e) => {
+    e.target.checked
+      ? this.setState({ housework: true })
+      : this.setState({ housework: false });
+  };
 
-    //houseWork
-    handleHouseWork = (e) => {
-      e.target.checked
-        ? this.setState({ housework: true })
-        : this.setState({ housework: false });
-    };
-
-    //animalscare
-    handleAnimalScare = (e) => {
-      e.target.checked
-      ? this.setState({animalScare: true})
-      : this.setState({animalScare: false});
-    }
-
- 
+  //animalscare
+  handleAnimalScare = (e) => {
+    e.target.checked
+      ? this.setState({ animalScare: true })
+      : this.setState({ animalScare: false });
+  };
 
   render() {
     return (
-      <div className="container">
+      <div className="container" id="offers">
         <form onSubmit={this.handleSubmit}>
           <div className="row">
             {/* Stanowisko firma*/}
@@ -115,17 +117,16 @@ class Offers extends Component {
                   <li>IT</li>
                   <li>
                     <label className="dropdown-menu-item checkbox">
-                      <input type="checkbox" 
-                      onChange={this.handleHouseWork}
-                      />
+                      <input type="checkbox" onChange={this.handleHouseWork} />
                       <span className="glyphicon glyphicon-unchecked"></span>
                       HouseWork
                     </label>
                   </li>
                   <li>
                     <label className="dropdown-menu-item checkbox">
-                      <input type="checkbox" 
-                      onChange={this.handleAnimalScare}
+                      <input
+                        type="checkbox"
+                        onChange={this.handleAnimalScare}
                       />
                       <span className="glyphicon glyphicon-unchecked"></span>
                       AnimalScare
