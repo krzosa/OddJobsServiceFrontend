@@ -8,9 +8,8 @@ export function Frame(date) {
   let description = date.description;
   let dateTime = date.dateTime;
   let city = date.city;
-  const timeYearMonthDay = dateTime[0] + "." + dateTime[1] + "." + dateTime[2];
-  const hoursMinutesSeconds =
-    dateTime[3] + ":" + dateTime[4] + ":" + dateTime[5];
+  const timeYearMonthDay = dateTime[2] + "." + dateTime[1] + "." + dateTime[0];
+  // const hoursMinutesSeconds =   dateTime[3] + ":" + dateTime[4] + ":" + dateTime[5];
 
   return (
     <div className="container mt-2 " id="offers-frame">
@@ -23,7 +22,9 @@ export function Frame(date) {
             <div className="col-md-8">
               <div className="card-body">
                 <h4 className="card-title">
-                  <Link to={"details/" + advertisementID} target='_blank'>{title}</Link>
+                  <Link to={"details/" + advertisementID} target="_blank">
+                    {title}
+                  </Link>
                 </h4>
                 <h5 className="card-title">
                   <a href="#">{}</a>
@@ -31,9 +32,7 @@ export function Frame(date) {
                 <p className="card-text">{city}</p>
                 <p className="card-text">{description}</p>
                 <p className="card-text">
-                  <small className="text-muted">
-                    {timeYearMonthDay + "  " + hoursMinutesSeconds}
-                  </small>
+                  <small className="text-muted">{timeYearMonthDay}</small>
                 </p>
               </div>
             </div>
