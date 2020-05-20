@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import IMG from "./../Offers/images/allegro.jpg";
 import axios from "axios";
+import { CreatePolishString } from "./CreatePolishString";
 
 export default class Details extends Component {
   state = {
@@ -37,41 +38,52 @@ export default class Details extends Component {
             </div>
             <div className="border-left">
               <div className="col-md form-group text-center mt-4 ">
-                <i className="fas fa-money-bill-wave">80-90zł brutto/godz.</i>
+                <i className="fas fa-money-bill-wave">
+                  {" "}
+                  {this.state.table.reward}zł brutto/godz.
+                </i>
               </div>
             </div>
           </div>
 
-          <div className="row no-gutters text-center mt-3">
-            <div className="col-md-3 ml-5">
-              <i className="fas fa-map-marker-alt">{this.state.table.city}</i>
-            </div>
-
-            <div className="col-md-3 ml-5">
-              <i className="fas fa-newspaper">Umowa o pracę</i>
-            </div>
-
-            <div className="col-md-3 ml-5">
-              <i className="fas fa-chart-line">Praca fizyczna</i>
-            </div>
-          </div>
-
           <div className="row no-gutters text-center mt-3 mb-3">
-            <div className="col-md-3 ml-5">
-              <i className="fas fa-clock">Pełny etat</i>
+            <div className="col-md-2 ml-5">
+              <i className="fas fa-map-marker-alt"> {this.state.table.city}</i>
+            </div>
+
+            <div className="col-md-2 ml-5">
+              <i className="fas fa-newspaper">
+                {" "}
+                {CreatePolishString(this.state.table.contractType)}
+              </i>
             </div>
 
             <div className="col-md-3 ml-5">
-              <i className="fas fa-calendar-alt">Ważna jeszcze 20dni</i>
+              <i className="fas fa-chart-line">
+                {" "}
+                {CreatePolishString(this.state.table.advertisementCategory)}
+              </i>
+            </div>
+
+            <div className="col-md-2 ml-5">
+              <i className="fas fa-clock">
+                {" "}
+                {CreatePolishString(this.state.table.workingHours)}
+              </i>
             </div>
           </div>
+
+          {/*
+            <div className="col-md-3 ml-5">
+    <i className="fas fa-calendar-alt"> {}</i>
+</div>*/}
         </div>
         <div className="border-top mt-3">
           <div className="card border-light  no-gutters mb-3 d-flex">
             <div className="card-header text-center  bg-primary text-white ">
-              Ward Personnel Limited
+              {/*Ward Personnel Limited*/}
               <br />
-              (Nazwa firmy)
+              {/*(Nazwa firmy)*/}
             </div>
             <div className="card-body">
               <h5 className="card-title">Opis stanowiska:</h5>

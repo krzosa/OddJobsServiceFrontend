@@ -14,11 +14,15 @@ class Offers extends Component {
     housework: false,
     animalScare: false,
     gardencare: false,
+    halfTime: false,
+    fullTime: false,
+    employmentContract: false,
+    mandatoryContract: false,
 
     offset: 0,
     elements: [],
-    //perPage okresla ile ogloszen ma być na stronie 
-    perPage: 2,
+    //perPage okresla ile ogloszen ma być na stronie
+    perPage: 1,
     currentPage: 0,
   };
 
@@ -43,24 +47,28 @@ class Offers extends Component {
     this.receiveData(this.state.url);
   }
 
-  //Przycisk Szukaj 
+  //Przycisk Szukaj
   handleSubmit = (e) => {
     e.preventDefault();
 
-    //ustawienie na 1 stronie 
-    this.setState({currentPage: 0,offset: 0});
+    //ustawienie na 1 stronie
+    this.setState({ currentPage: 0, offset: 0 });
 
     let pom = this.state.url + "?";
 
-    //przekazanie pobranych parametrów i utworzenie nowego adresu URL do zapytania 
+    //przekazanie pobranych parametrów i utworzenie nowego adresu URL do zapytania
     pom += CreateUrl(
       this.state.city,
       this.state.housework,
       this.state.animalScare,
-      this.state.gardencare
+      this.state.gardencare,
+      this.state.halfTime,
+      this.state.fullTime,
+      this.state.employmentContract,
+      this.state.mandatoryContract
     );
     //nowe zapytanie wraz z adrgumentami np. miasto, kategoria
-      this.receiveData(pom)
+    this.receiveData(pom);
   };
 
   //Pobieranie Miasta
@@ -83,21 +91,48 @@ class Offers extends Component {
   };
 
   //gardencare
-    handleGardenCare = (e) => {
-      e.target.checked
-        ? this.setState({ gardencare: true })
-        : this.setState({ gardencare: false });
-    };
+  handleGardenCare = (e) => {
+    e.target.checked
+      ? this.setState({ gardencare: true })
+      : this.setState({ gardencare: false });
+  };
+
+  //halfTime
+  handleHalfTime = (e) => {
+    e.target.checked
+      ? this.setState({ halfTime: true })
+      : this.setState({ halfTime: false });
+  };
+
+  //fullTime
+  handleFullTime = (e) => {
+    e.target.checked
+      ? this.setState({ fullTime: true })
+      : this.setState({ fullTime: false });
+  };
+
+  //employmentContract
+  handleEmploymentContract = (e) => {
+    e.target.checked
+      ? this.setState({ employmentContract: true })
+      : this.setState({ employmentContract: false });
+  };
+
+  //mandatoryContract
+  handleMandatoryContract = (e) => {
+    e.target.checked
+      ? this.setState({ mandatoryContract: true })
+      : this.setState({ mandatoryContract: false });
+  };
 
   //ustawianie aktualnej strony
   setElementsForCurrentPage() {
     let elements = this.state.contacts
       .slice(this.state.offset, this.state.offset + this.state.perPage)
-      .map((post) => Frame(post) );
+      .map((post) => Frame(post));
     this.setState({ elements: elements });
   }
 
-  
   handlePageClick = (data) => {
     const selectedPage = data.selected;
     const offset = selectedPage * this.state.perPage;
@@ -125,23 +160,14 @@ class Offers extends Component {
           activeClassName={"active"}
         />
       );
-    }    
+    }
 
     return (
       <div className="container" id="offers">
         <form onSubmit={this.handleSubmit}>
-          <div className="row">
-            {/* Stanowisko firma*/}
-            <div className="col-sm-6 mt-1 col-md-4 col-xl-4">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Stanowisko, firma"
-              />
-            </div>
-
+          <div className="row mb-5">
             {/* Miasto*/}
-            <div className="col-sm-6 mt-1 col-md-4 col-xl-4">
+            <div className="ml-3 mt-2">
               <input
                 type="text"
                 className="form-control"
@@ -150,19 +176,8 @@ class Offers extends Component {
               />
             </div>
 
-
-            {/* Szukaj */}
-            <button
-              className="mt-1 col ml-3 mr-3 mr-sm-3 col-sm-6 col-md-4 col-xl-2 ml-xl-5 btn btn-primary"
-              type="submit"
-            >
-              Szukaj
-            </button>
-          </div>
-
-          <div className="row">
             {/* Kategorie */}
-            <div className="col-sm-6 mt-2 col-md-4 col-xl-3">
+            <div className="mt-2">
               <div className="col-sm-12 btn-group">
                 <button
                   type="button"
@@ -177,7 +192,7 @@ class Offers extends Component {
                     <label className="dropdown-menu-item checkbox">
                       <input type="checkbox" onChange={this.handleHouseWork} />
                       <span className="glyphicon glyphicon-unchecked"></span>
-                      HouseWork
+                      Prace domowe
                     </label>
                   </li>
                   <li>
@@ -187,32 +202,15 @@ class Offers extends Component {
                         onChange={this.handleAnimalScare}
                       />
                       <span className="glyphicon glyphicon-unchecked"></span>
-                      AnimalScare
+                      Opieka nad zwierzętami
                     </label>
-                  </li>
-                  <li>
-                    <label className="dropdown-menu-item checkbox">
-                      <input
-                        type="checkbox"
-                        onChange={this.handleGardenCare}
-                      />
-                      <span className="glyphicon glyphicon-unchecked"></span>
-                      GARDENCARE
-                    </label>
-                  </li>
-                  <li role="separator" className="divider"></li>
-                  <li>
-                    <button className="btn btn-link dropdown-menu-item">
-                      <span className="glyphicon glyphicon-globe"></span>
-                      Globe
-                    </button>
                   </li>
                 </ul>
               </div>
             </div>
 
             {/* Rodzaj umowy */}
-            <div className="col-sm-6 mt-2 col-md-4 col-xl-3">
+            <div className="mt-2">
               <div className="col-sm-12 btn-group">
                 <button
                   type="button"
@@ -225,31 +223,30 @@ class Offers extends Component {
                   <li>Umowa</li>
                   <li>
                     <label className="dropdown-menu-item checkbox">
-                      <input type="checkbox" />
+                      <input
+                        type="checkbox"
+                        onChange={this.handleMandatoryContract}
+                      />
                       <span className="glyphicon glyphicon-unchecked"></span>
                       Zlecenie
                     </label>
                   </li>
                   <li>
                     <label className="dropdown-menu-item checkbox">
-                      <input type="checkbox" />
+                      <input
+                        type="checkbox"
+                        onChange={this.handleEmploymentContract}
+                      />
                       <span className="glyphicon glyphicon-unchecked"></span>O
-                      prace
+                      Prace
                     </label>
-                  </li>
-                  <li role="separator" className="divider"></li>
-                  <li>
-                    <button className="btn btn-link dropdown-menu-item">
-                      <span className="glyphicon glyphicon-globe"></span>
-                      Dzieło
-                    </button>
                   </li>
                 </ul>
               </div>
             </div>
 
             {/* Wymiar pracy */}
-            <div className="col-sm-12 mt-2 col-md-4 col-xl-3">
+            <div className="mt-2">
               <div className="col-sm-12 btn-group">
                 <button
                   type="button"
@@ -259,32 +256,32 @@ class Offers extends Component {
                   Wymiar pracy
                 </button>
                 <ul className="dropdown-menu col-11">
-                  <li>Wymiar</li>
+                  <li>Wymiar czasu</li>
                   <li>
                     <label className="dropdown-menu-item checkbox">
-                      <input type="checkbox" />
+                      <input type="checkbox" onChange={this.handleHalfTime} />
                       <span className="glyphicon glyphicon-unchecked"></span>
                       1/2 etatu
                     </label>
                   </li>
                   <li>
                     <label className="dropdown-menu-item checkbox">
-                      <input type="checkbox" />
+                      <input type="checkbox" onChange={this.handleFullTime} />
                       <span className="glyphicon glyphicon-unchecked"></span>
-                      3/5 etatu
-                    </label>
-                  </li>
-                  <li role="separator" className="divider"></li>
-                  <li>
-                    <label className="dropdown-menu-item checkbox">
-                      <input type="checkbox" />
-                      <span className="glyphicon glyphicon-unchecked"></span>
-                      4/5 etatu
+                      pełen etat
                     </label>
                   </li>
                 </ul>
               </div>
             </div>
+
+            {/* Szukaj */}
+            <button
+              className="mt-2 ml-5 col-md-2 btn btn-primary"
+              type="submit"
+            >
+              Szukaj
+            </button>
           </div>
         </form>
 
