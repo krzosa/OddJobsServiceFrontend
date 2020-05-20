@@ -2,13 +2,12 @@ import React from "react";
 import IMG from "./images/allegro.jpg";
 import { Link } from "react-router-dom";
 
-export const Frame = ({
-  advertisementID,
-  title,
-  description,
-  dateTime,
-  city,
-}) => {
+export function Frame(date) {
+  let advertisementID = date.advertisementID;
+  let title = date.title;
+  let description = date.description;
+  let dateTime = date.dateTime;
+  let city = date.city;
   const timeYearMonthDay = dateTime[0] + "." + dateTime[1] + "." + dateTime[2];
   const hoursMinutesSeconds =
     dateTime[3] + ":" + dateTime[4] + ":" + dateTime[5];
@@ -24,9 +23,7 @@ export const Frame = ({
             <div className="col-md-8">
               <div className="card-body">
                 <h4 className="card-title">
-                  <Link to={'details/'+ advertisementID} >
-                    {title}
-                    </Link>
+                  <Link to={"details/" + advertisementID} target='_blank'>{title}</Link>
                 </h4>
                 <h5 className="card-title">
                   <a href="#">{}</a>
@@ -45,6 +42,6 @@ export const Frame = ({
       </div>
     </div>
   );
-};
+}
 
 export default Frame;

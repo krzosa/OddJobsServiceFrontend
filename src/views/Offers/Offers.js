@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Pagination from "./Pagination";
-import ContactList from "./ContactList";
 import { CreateUrl } from "./CreateUrl";
+
+import ReactPaginate from "react-paginate";
+import { Frame } from "./Frame";
+import "./styles.css";
 
 class Offers extends Component {
   state = {
@@ -11,34 +13,54 @@ class Offers extends Component {
     city: "",
     housework: false,
     animalScare: false,
+    gardencare: false,
+
+    offset: 0,
+    elements: [],
+    //perPage okresla ile ogloszen ma być na stronie 
+    perPage: 2,
+    currentPage: 0,
   };
 
-  componentDidMount() {
+  //przyjmuje adres URL i uzupełnianie tablicy tym co zwraca zapytanie do backendu
+  receiveData(url) {
     axios
-      .get(this.state.url)
-      .then((json) => this.setState({ contacts: json.data }))
+      .get(url)
+      .then((json) =>
+        this.setState(
+          {
+            contacts: json.data,
+            pageCount: Math.ceil(json.data.length / this.state.perPage),
+          },
+          () => this.setElementsForCurrentPage()
+        )
+      )
       .catch((err) => console.log(err));
-
-    //alert("Wyszukiwanie działa wyłącznie na: kategorii oraz mieście");
   }
 
+  //wywyłanie zaraz po odpaleniu strony
+  componentDidMount() {
+    this.receiveData(this.state.url);
+  }
+
+  //Przycisk Szukaj 
   handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(this.state.housework);
+    //ustawienie na 1 stronie 
+    this.setState({currentPage: 0,offset: 0});
+
     let pom = this.state.url + "?";
 
+    //przekazanie pobranych parametrów i utworzenie nowego adresu URL do zapytania 
     pom += CreateUrl(
       this.state.city,
       this.state.housework,
-      this.state.animalScare
+      this.state.animalScare,
+      this.state.gardencare
     );
-
-    axios
-      .get(pom)
-      .then((json) => this.setState({ contacts: json.data }))
-      .catch((err) => console.log(err));
-    console.log(this.state.contacts);
+    //nowe zapytanie wraz z adrgumentami np. miasto, kategoria
+      this.receiveData(pom)
   };
 
   //Pobieranie Miasta
@@ -60,7 +82,51 @@ class Offers extends Component {
       : this.setState({ animalScare: false });
   };
 
+  //gardencare
+    handleGardenCare = (e) => {
+      e.target.checked
+        ? this.setState({ gardencare: true })
+        : this.setState({ gardencare: false });
+    };
+
+  //ustawianie aktualnej strony
+  setElementsForCurrentPage() {
+    let elements = this.state.contacts
+      .slice(this.state.offset, this.state.offset + this.state.perPage)
+      .map((post) => Frame(post) );
+    this.setState({ elements: elements });
+  }
+
+  
+  handlePageClick = (data) => {
+    const selectedPage = data.selected;
+    const offset = selectedPage * this.state.perPage;
+    this.setState({ currentPage: selectedPage, offset: offset }, () => {
+      this.setElementsForCurrentPage();
+    });
+  };
+
   render() {
+    let paginationElement;
+    if (this.state.pageCount > 1) {
+      paginationElement = (
+        <ReactPaginate
+          previousLabel={"prev"}
+          nextLabel={"next"}
+          breakLabel={"..."}
+          breakClassName={"break-me"}
+          pageCount={this.state.pageCount}
+          forcePage={this.state.currentPage}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={this.handlePageClick}
+          containerClassName={"pagination"}
+          subContainerClassName={"pages pagination"}
+          activeClassName={"active"}
+        />
+      );
+    }    
+
     return (
       <div className="container" id="offers">
         <form onSubmit={this.handleSubmit}>
@@ -84,14 +150,6 @@ class Offers extends Component {
               />
             </div>
 
-            {/* Odległość */}
-            <select className="mt-1 col-3 ml-3 mr-5 col-sm-3 mr-sm-5 col-md-2 mr-md-0 col-xl-1 selectpicker">
-              <optgroup label="Odległość">
-                <option>2km</option>
-                <option>5km</option>
-                <option>10km</option>
-              </optgroup>
-            </select>
 
             {/* Szukaj */}
             <button
@@ -130,6 +188,16 @@ class Offers extends Component {
                       />
                       <span className="glyphicon glyphicon-unchecked"></span>
                       AnimalScare
+                    </label>
+                  </li>
+                  <li>
+                    <label className="dropdown-menu-item checkbox">
+                      <input
+                        type="checkbox"
+                        onChange={this.handleGardenCare}
+                      />
+                      <span className="glyphicon glyphicon-unchecked"></span>
+                      GARDENCARE
                     </label>
                   </li>
                   <li role="separator" className="divider"></li>
@@ -219,8 +287,9 @@ class Offers extends Component {
             </div>
           </div>
         </form>
-        <ContactList contacts={this.state.contacts} />
-        <Pagination />
+
+        {this.state.elements}
+        {paginationElement}
       </div>
     );
   }
