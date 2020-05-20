@@ -1,4 +1,4 @@
-export function CreateUrl(city,housework,animalScare){
+export function CreateUrl(city,housework,animalScare,gardencare){
     var url = '';
     var pom = [];
 
@@ -13,14 +13,16 @@ export function CreateUrl(city,housework,animalScare){
     //dodanie do tablicy kategorii animalScare
     if(animalScare)
         pom.push("advertisementCategory=ANIMALSCARE")
+
+    //dodawanie do tablicy kategorii gardencare
+    if(gardencare)
+        pom.push("advertisementCategory=GARDENCARE")
     
     //Łączenie tablic w ostateczny URL
     if(pom.length > 1)
         url = pom.join("&");
     else
         url = pom.join();
-
-    console.log(url);
     
 
     return url;

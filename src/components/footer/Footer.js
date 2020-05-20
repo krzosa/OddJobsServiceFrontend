@@ -60,6 +60,7 @@ class Footer extends Component {
               <a
                 id = "inst"
                 href="https://www.instagram.com/eryk.it/"
+                target="_blank"
                 style={{ color: "white" }}
               >
                 <i className="fab fa-instagram" />
