@@ -6,27 +6,32 @@ import ReactPaginate from "react-paginate";
 import { Frame } from "./Frame";
 import "./styles.css";
 
+// perPage                      okresla ile ogloszen ma być na stronie
+// ReceiveData                  przyjmuje adres URL i uzupełnianie tablicy tym co zwraca zapytanie do backendu
+// componentDidMount            wywyłanie zaraz po odpaleniu strony
+// handleSubmit                 Przycisk Szukaj
+// CreateUrl                    przekazanie pobranych parametrów i utworzenie nowego adresu URL do zapytania
+// handleCity                   Pobieranie Miasta
+// handleAdvertisementCategory  ustawienie kategorii
+// handleWorkingHours           ustawianie wymiaru pracy
+// handleContractType           ustawienie rodzaju umowy
+// setElementsForCurrentPage    ustawianie aktualnej strony
+
 class Offers extends Component {
   state = {
     contacts: [],
     url: "http://149.156.146.249:60021/api/advertisements",
     city: "",
-    housework: false,
-    animalScare: false,
-    gardencare: false,
-    halfTime: false,
-    fullTime: false,
-    employmentContract: false,
-    mandatoryContract: false,
+    advertisementCategory: "",
+    workingHours: "",
+    contractType: "",
 
     offset: 0,
     elements: [],
-    //perPage okresla ile ogloszen ma być na stronie
     perPage: 1,
     currentPage: 0,
   };
 
-  //przyjmuje adres URL i uzupełnianie tablicy tym co zwraca zapytanie do backendu
   receiveData(url) {
     axios
       .get(url)
@@ -42,90 +47,41 @@ class Offers extends Component {
       .catch((err) => console.log(err));
   }
 
-  //wywyłanie zaraz po odpaleniu strony
   componentDidMount() {
     this.receiveData(this.state.url);
   }
 
-  //Przycisk Szukaj
   handleSubmit = (e) => {
     e.preventDefault();
-
-    //ustawienie na 1 stronie
+    let pom = this.state.url + "?";
     this.setState({ currentPage: 0, offset: 0 });
 
-    let pom = this.state.url + "?";
-
-    //przekazanie pobranych parametrów i utworzenie nowego adresu URL do zapytania
     pom += CreateUrl(
       this.state.city,
-      this.state.housework,
-      this.state.animalScare,
-      this.state.gardencare,
-      this.state.halfTime,
-      this.state.fullTime,
-      this.state.employmentContract,
-      this.state.mandatoryContract
+      this.state.advertisementCategory,
+      this.state.workingHours,
+      this.state.contractType
     );
-    //nowe zapytanie wraz z adrgumentami np. miasto, kategoria
+
     this.receiveData(pom);
   };
 
-  //Pobieranie Miasta
   handleCity = (e) => {
     this.setState({ city: e.target.value });
   };
 
-  //houseWork
-  handleHouseWork = (e) => {
-    e.target.checked
-      ? this.setState({ housework: true })
-      : this.setState({ housework: false });
+  handleAdvertisementCategory = (e) => {
+    this.setState({ advertisementCategory: e.target.value });
   };
 
-  //animalscare
-  handleAnimalScare = (e) => {
-    e.target.checked
-      ? this.setState({ animalScare: true })
-      : this.setState({ animalScare: false });
+  handleWorkingHours = (e) => {
+    this.setState({ workingHours: e.target.value });
   };
 
-  //gardencare
-  handleGardenCare = (e) => {
-    e.target.checked
-      ? this.setState({ gardencare: true })
-      : this.setState({ gardencare: false });
+  handleContractType = (e) => {
+    this.setState({ contractType: e.target.value });
   };
 
-  //halfTime
-  handleHalfTime = (e) => {
-    e.target.checked
-      ? this.setState({ halfTime: true })
-      : this.setState({ halfTime: false });
-  };
-
-  //fullTime
-  handleFullTime = (e) => {
-    e.target.checked
-      ? this.setState({ fullTime: true })
-      : this.setState({ fullTime: false });
-  };
-
-  //employmentContract
-  handleEmploymentContract = (e) => {
-    e.target.checked
-      ? this.setState({ employmentContract: true })
-      : this.setState({ employmentContract: false });
-  };
-
-  //mandatoryContract
-  handleMandatoryContract = (e) => {
-    e.target.checked
-      ? this.setState({ mandatoryContract: true })
-      : this.setState({ mandatoryContract: false });
-  };
-
-  //ustawianie aktualnej strony
   setElementsForCurrentPage() {
     let elements = this.state.contacts
       .slice(this.state.offset, this.state.offset + this.state.perPage)
@@ -141,7 +97,7 @@ class Offers extends Component {
     });
   };
 
-  render() {
+  render() {    
     let paginationElement;
     if (this.state.pageCount > 1) {
       paginationElement = (
@@ -187,10 +143,26 @@ class Offers extends Component {
                   Kategorie
                 </button>
                 <ul className="dropdown-menu col-11">
-                  <li>IT</li>
                   <li>
                     <label className="dropdown-menu-item checkbox">
-                      <input type="checkbox" onChange={this.handleHouseWork} />
+                      <input
+                        type="radio"
+                        name="advertisementCategory"
+                        value=""
+                        onChange={this.handleAdvertisementCategory}
+                      />
+                      <span className="glyphicon glyphicon-unchecked"></span>
+                      Wszystkie
+                    </label>
+                  </li>
+                  <li>
+                    <label className="dropdown-menu-item checkbox">
+                      <input
+                        type="radio"
+                        name="advertisementCategory"
+                        value="HOUSEWORK"
+                        onChange={this.handleAdvertisementCategory}
+                      />
                       <span className="glyphicon glyphicon-unchecked"></span>
                       Prace domowe
                     </label>
@@ -198,8 +170,10 @@ class Offers extends Component {
                   <li>
                     <label className="dropdown-menu-item checkbox">
                       <input
-                        type="checkbox"
-                        onChange={this.handleAnimalScare}
+                        type="radio"
+                        name="advertisementCategory"
+                        value="ANIMALSCARE"
+                        onChange={this.handleAdvertisementCategory}
                       />
                       <span className="glyphicon glyphicon-unchecked"></span>
                       Opieka nad zwierzętami
@@ -220,12 +194,25 @@ class Offers extends Component {
                   Rodzaj umowy
                 </button>
                 <ul className="dropdown-menu col-11">
-                  <li>Umowa</li>
                   <li>
                     <label className="dropdown-menu-item checkbox">
                       <input
-                        type="checkbox"
-                        onChange={this.handleMandatoryContract}
+                        type="radio"
+                        name="contractType"
+                        value=""
+                        onChange={this.handleContractType}
+                      />
+                      <span className="glyphicon glyphicon-unchecked"></span>
+                      Wszystkie
+                    </label>
+                  </li>
+                  <li>
+                    <label className="dropdown-menu-item checkbox">
+                      <input
+                        type="radio"
+                        name="contractType"
+                        value="MANDATORY_CONTRACT"
+                        onChange={this.handleContractType}
                       />
                       <span className="glyphicon glyphicon-unchecked"></span>
                       Zlecenie
@@ -234,8 +221,10 @@ class Offers extends Component {
                   <li>
                     <label className="dropdown-menu-item checkbox">
                       <input
-                        type="checkbox"
-                        onChange={this.handleEmploymentContract}
+                        type="radio"
+                        name="contractType"
+                        value="EMPLOYMENT_CONTRACT"
+                        onChange={this.handleContractType}
                       />
                       <span className="glyphicon glyphicon-unchecked"></span>O
                       Prace
@@ -256,17 +245,37 @@ class Offers extends Component {
                   Wymiar pracy
                 </button>
                 <ul className="dropdown-menu col-11">
-                  <li>Wymiar czasu</li>
                   <li>
                     <label className="dropdown-menu-item checkbox">
-                      <input type="checkbox" onChange={this.handleHalfTime} />
+                      <input
+                        type="radio"
+                        name="workingHours"
+                        onChange={this.handleWorkingHours}
+                      />
+                      <span className="glyphicon glyphicon-unchecked"></span>
+                      Wszystkie
+                    </label>
+                  </li>
+                  <li>
+                    <label className="dropdown-menu-item checkbox">
+                      <input
+                        type="radio"
+                        name="workingHours"
+                        value="HALF_TIME"
+                        onChange={this.handleWorkingHours}
+                      />
                       <span className="glyphicon glyphicon-unchecked"></span>
                       1/2 etatu
                     </label>
                   </li>
                   <li>
                     <label className="dropdown-menu-item checkbox">
-                      <input type="checkbox" onChange={this.handleFullTime} />
+                      <input
+                        type="radio"
+                        name="workingHours"
+                        value="FULL_TIME"
+                        onChange={this.handleWorkingHours}
+                      />
                       <span className="glyphicon glyphicon-unchecked"></span>
                       pełen etat
                     </label>
