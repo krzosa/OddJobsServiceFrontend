@@ -1,39 +1,25 @@
 export function CreateUrl(
   city,
-  housework,
-  animalScare,
-  gardencare,
-  halfTime,
-  fullTime,
-  employmentContract,
-  mandatoryContract
+  advertisementCategory,
+  workingHours,
+  contractType
 ) {
   var url = "";
   var pom = [];
+  let advertisementCategoryTable = ["HOUSEWORK", "ANIMALSCARE"];
+  let workingHoursTable = ["HALF_TIME", "FULL_TIME"];
+  let contractTypeTable = ["EMPLOYMENT_CONTRACT", "MANDATORY_CONTRACT"];
 
-  //dodanie do tablicy miasta
   if (city.length > 0) pom.push("city=" + city.toUpperCase());
 
-  //dodanie do tablicy kategorii housework
-  if (housework) pom.push("advertisementCategory=HOUSEWORK");
+  if (advertisementCategoryTable.includes(advertisementCategory))
+    pom.push("advertisementCategory=" + advertisementCategory);
 
-  //dodanie do tablicy kategorii animalScare
-  if (animalScare) pom.push("advertisementCategory=ANIMALSCARE");
+  if (workingHoursTable.includes(workingHours))
+    pom.push("workingHours=" + workingHours);
 
-  //dodawanie do tablicy kategorii gardencare
-  if (gardencare) pom.push("advertisementCategory=GARDENCARE");
-
-  //dodawanie do tablicy czasu 1/2
-  if (halfTime) pom.push("workingHours=HALF_TIME");
-
-  //dodawanie do tablicy czasu 1/1
-  if (fullTime) pom.push("workingHours=FULL_TIME");
-
-  //dodawanie do tablicy rodzaju umowy o prace
-  if (employmentContract) pom.push("contractType=EMPLOYMENT_CONTRACT");
-
-  //dodawanie do tablicy rodzaju umowy zlecenie
-  if (mandatoryContract) pom.push("contractType=MANDATORY_CONTRACT");
+  if (contractTypeTable.includes(contractType))
+    pom.push("contractType=" + contractType);
 
   //Łączenie tablic w ostateczny URL
   if (pom.length > 1) url = pom.join("&");

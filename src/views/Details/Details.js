@@ -3,22 +3,22 @@ import IMG from "./../Offers/images/allegro.jpg";
 import axios from "axios";
 import { CreatePolishString } from "./CreatePolishString";
 
+// CreatePolishString     funkcja, która konwertuje ang na PL
+// urlWithDetailsId       zmienna która przechowuje adres np. /details/1
+// createUrlWithId        zmienna która ucina /details
+
 export default class Details extends Component {
   state = {
     table: "",
   };
 
   componentDidMount() {
-    //zmienna która przechowuje adres np. /details/1
     let urlWithDetailsId = this.props.location.pathname;
-    //zmienna która ucina /details
     let createUrlWithId;
 
-    //sprawdzenie czy wystepuje tekst "details" jesli tak to tworzy string bez 'details'
     if (urlWithDetailsId.includes("/details"))
       createUrlWithId = this.props.location.pathname.substr(8);
 
-    //zapytanie na serwer z okreslonym id oraz uzupelnienie tablicy tym co zwraca
     axios
       .get("http://149.156.146.249:60021/api/advertisements" + createUrlWithId)
       .then((res) => this.setState({ table: res.data }))
