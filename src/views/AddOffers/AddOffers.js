@@ -1,14 +1,61 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 class AddOffers extends Component{
+  offerState = {
+    title: "",
+    description: "",
+    city: "",
+    checked: false
+  };
+
+  handleChangeTitle = (e) => {
+    this.setState({ title: e.target.value });
+  };
+
+  handleChangeDescription = (e) => {
+    this.setState({ description: e.target.value });
+  };
+
+  handleChangeCity = (e) => {
+    this.setState({ city: e.target.value });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+     {
+      axios
+        .post("http://149.156.146.249:60021/api/advertisements/", {
+          advertisementId: 123,
+          title: this.state.title,
+          description: this.state.description,
+          dateTime: [2020,5,16,21,36,28],
+          featured: false,
+          createdBy: "Sergio",
+          city: this.state.city
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+
+
     render(){
         return(
             <div className="container content mt-5 mb-5">
-              <form>
 
+              <form onSubmit={this.handleAddOffer}>
+    
                   <div className="form-group col-12 col-md-10 col-lg-6">
                     <label forHtml="jobName" class="mt-2">Nazwa pracy:</label>
-                    <input type="text" className="form-control" id="jobName"></input>
+                    <input 
+                      type="text"
+                      className="form-control"
+                      id="jobName"
+                      onChange={this.handleChangeTitle}
+                    />
+
+
+
                   </div>
       
                   <div className="form-group col-12 col-md-10 col-lg-6">
@@ -18,7 +65,13 @@ class AddOffers extends Component{
                 
                 <div className="form-group col-12 col-md-10 col-lg-6">
                   <label forHtml="city">Miasto:</label>
-                  <input type="text" className="form-control" id="city"></input>
+                  <input 
+                    type="text"
+                    className="form-control"
+                    id="city"
+                    onChange={this.handleChangeCity}
+
+                  />
                 </div>
 
               <div className="row pl-3 py-2">
@@ -47,7 +100,12 @@ class AddOffers extends Component{
 
                 <div className="form-group mx-3">
                   <label forHtml="description">Opis:</label>
-                  <textarea className="form-control" id="description" rows="4"></textarea>
+                  <textarea 
+                    className="form-control" 
+                    id="description" 
+                    rows="4"
+                    onChange={this.handleChangeDescription}
+                  />
                 </div>
 
                 <div className="form-group ml-3">
@@ -57,6 +115,7 @@ class AddOffers extends Component{
                 <div className="col-12 text-center" >
                   <button type="submit" className="btn btn-primary col-8 col-md-6 col-lg-4 mb-5" >Dodaj oferte</button>
                 </div>
+
               </form>
             </div>
         );
