@@ -4,6 +4,10 @@ import axios from "axios";
 import { FunctionRegistration } from "./FunctionRegistration";
 import { AlertFile } from "./AlertFile";
 
+import auth from '../../Auth/Auth';
+import Userpanel from '../userpanel/Userpanel';
+
+
 class Registration extends Component {
   state = {
     email: "",
@@ -88,6 +92,7 @@ class Registration extends Component {
   };
 
   render() {
+    if(auth.isAuthenticated() == false){
     return (
       <div className="container ">
         <div className="form-check">
@@ -203,6 +208,10 @@ class Registration extends Component {
         </div>
       </div>
     );
+  }
+  else{
+    return <Userpanel />
+  }
   }
 }
 
