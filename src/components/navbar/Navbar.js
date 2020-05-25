@@ -31,6 +31,7 @@ class Navbar extends Component{
                       auth.logout();
                     }}>Logout</button>
                     </div>
+
                 </div>
               </div>
             </nav>

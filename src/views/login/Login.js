@@ -50,7 +50,7 @@ class Login extends React.Component {
   render() {
     if(auth.isAuthenticated() == false){
     return (
-      <div className="container content">
+      <div className="container content" id="login">
         <div className="form-check my-5">
           <div className="col-12 text-center my-5">
             <button className="btn btn-info btn-lg mx-2" type="submit">
@@ -89,6 +89,7 @@ class Login extends React.Component {
               <button
                 type="submit"
                 className="btn btn-info btn-lg mx-2 col-8 col-md-7 col-lg-4"
+                id="zal"
               >
                 Zaloguj
               </button>

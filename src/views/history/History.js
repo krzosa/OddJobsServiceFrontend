@@ -5,7 +5,7 @@ import Pagination from "./Pagination";
 class History extends Component {
   render() {
     return (
-      <div className="container">
+      <div className="container" id="history">
          <Frame />
         <Pagination />
       </div>

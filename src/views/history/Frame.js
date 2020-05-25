@@ -5,7 +5,7 @@ class Frame extends Component {
     var data = require("./Data/data.json");
     //console.log(data["info"][0]["jobName"]);
     return (
-      <div className="container mt-2 ">
+      <div className="container mt-2" id="history-frame">
         {data.info.map((item) => (
           <div className="row">
             <div className="card mb-3 col-100" >
