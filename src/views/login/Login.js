@@ -4,6 +4,9 @@ import axios from "axios";
 import { AlertFile } from "./AlertFile";
 import { FunctionLogin } from "./FunctionLogin";
 
+import auth from '../../Auth/Auth';
+import Userpanel from '../userpanel/Userpanel';
+
 class Login extends React.Component {
   state = {
     name: "",
@@ -39,12 +42,13 @@ class Login extends React.Component {
         .post("http://149.156.146.249:60021/api/login", data, {
           headers: headers,
         })
-        .then((res) => AlertFile(res))
-        .catch((err) => console.log(err));
+        .then((res) => AlertFile(res,this.props,data))
+        .catch((err) => {if(err.length>0) console.log(err)});
     }
   };
 
   render() {
+    if(auth.isAuthenticated() == false){
     return (
       <div className="container content">
         <div className="form-check my-5">
@@ -93,6 +97,10 @@ class Login extends React.Component {
         </div>
       </div>
     );
+  }
+  else{
+    return <Userpanel />
+  }
   }
 }
 
