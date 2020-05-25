@@ -20,6 +20,7 @@ import Userpanel from './views/userpanel/Userpanel';
 import AddOffers from './views/AddOffers/AddOffers';
 import NotFoundPage from './views/NotFoundPage/NotFoundPage'; 
 
+import {ProtectedRoute} from './Auth/Protected.Route';
 
 function App() {
 
@@ -36,8 +37,8 @@ function App() {
         <Route path="/details" component={Details} />
 	      <Route path="/homePage" component={HomePage} />
         <Route path="/editProfile" component={EditProfile} />
-        <Route path="/userpanel" component={Userpanel} />
-        <Route path="/addoffers" component={AddOffers} />
+        <ProtectedRoute path="/userpanel" component={Userpanel} />
+        <ProtectedRoute path="/addoffers" component={AddOffers} />
         <Route component={NotFoundPage} />
       </Switch>
       <Footer />
