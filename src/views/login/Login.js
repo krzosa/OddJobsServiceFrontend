@@ -14,12 +14,10 @@ class Login extends React.Component {
     errorChecked: "",
   };
 
-  //Pobieranie nazwy użytkownika
   hangleChangeName = (e) => {
     this.setState({ name: e.target.value });
   };
 
-  //Pobieranie hasła
   handleChangePassword = (e) => {
     this.setState({ password: e.target.value });
   };
@@ -50,9 +48,6 @@ class Login extends React.Component {
   };
 
   render() {
-
-    
-    
     if (auth.isAuthenticated() == false) {
       return (
         <div className="container content">
