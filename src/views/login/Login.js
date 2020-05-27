@@ -52,42 +52,6 @@ class Login extends React.Component {
       return (
         <div className="container content">
           <div className="form-check my-5">
-    return (
-      <div className="container content" id="login">
-        <div className="form-check my-5">
-          <div className="col-12 text-center my-5">
-            <button className="btn btn-info btn-lg mx-2" type="submit">
-              Zaloguj się
-            </button>
-
-            <button className="btn btn-info btn-lg mx-2" type="submit" disabled>
-              Rejestracja
-            </button>
-          </div>
-
-          <form onSubmit={this.handleSubmit}>
-            <div className="form-group col-12 my-3 text-center mb-4">
-              <input
-                type="text"
-                onChange={this.hangleChangeName}
-                id="username"
-                placeholder="Wpisz nazwę użytkownika"
-                className="text-center col-8 col-md-6 col-lg-4"
-              />
-              <p className="text-danger" id="userNameId"></p>
-            </div>
-
-            <div className="form-group col-12 my-3 text-center mb-4">
-              <input
-                type="password"
-                onChange={this.handleChangePassword}
-                id="password"
-                placeholder="Wpisz hasło"
-                className="text-center col-8 col-md-6 col-lg-4"
-              />
-              <p className="text-danger" id="passwordId"></p>
-            </div>
-
             <div className="col-12 text-center my-5">
               <button className="btn btn-info btn-lg mx-2" type="submit">
                 Zaloguj się
@@ -97,8 +61,6 @@ class Login extends React.Component {
                 className="btn btn-info btn-lg mx-2"
                 type="submit"
                 disabled
-                className="btn btn-info btn-lg mx-2 col-8 col-md-7 col-lg-4"
-                id="zal"
               >
                 Rejestracja
               </button>
