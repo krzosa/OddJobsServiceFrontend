@@ -77,7 +77,7 @@ class AddOffers extends Component{
 
                 <div className="form-group mx-3">
                   <label forHtml="description">Opis:</label>
-                  <textarea className="form-control" id="description" rows="4"></textarea>
+                  <textarea className="form-control" id="description" rows="2"></textarea>
                 </div>
 
                 <div className="form-group ml-3">

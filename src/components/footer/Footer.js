@@ -12,14 +12,15 @@ class Footer extends Component {
               <ul className="list-unstyled">
                 <li>Pomoc</li>
                 <li>Urzędy pracy</li>
+                <li><a href="history" class="text-white">Historia ogłoszeń</a></li>
               </ul>
             </div>
             {/* Column 2 */}
             <div className="col-md-3 col-sm-6 mt-4">
               <h4 id="firm">Dla firm</h4>
               <ul className="list-unstyled">
-                <li>Dodaj ogłoszenie</li>
-                <li>Konto pracodawcy</li>
+                <li><a href="addoffers" class="text-white">Dodaj ogłoszenie</a></li>
+                <li><a href="userpanel" class="text-white">Konto pracodawcy</a></li>
                 <li>Pomoc dla firm</li>
               </ul>
             </div>
@@ -27,8 +28,8 @@ class Footer extends Component {
             <div className="col-md-3 col-sm-6 mt-4">
               <h4 id="grup">Grupa Pracuj</h4>
               <ul className="list-unstyled">
-                <li>O nas</li>
-                <li>Reklama</li>
+                <li><a href="about" class="text-white">O nas</a></li>
+                <li><a href="https://www.pajacyk.pl/" class="text-white">Reklama</a></li>
                 <li>Partnerzy</li>
               </ul>
             </div>
@@ -51,10 +52,22 @@ class Footer extends Component {
               </div>
             </div>
             <div className="col-1">
-              <i className="fab fa-twitter" />
+              <a
+                href="https://twitter.com/"
+                target="_blank"
+                style={{ color: "white" }}
+              >
+                <i className="fab fa-twitter" />
+              </a>
             </div>
             <div className="col-1">
-              <i className="fab fa-facebook-f" />
+              <a
+                href="https://www.facebook.com/"
+                target="_blank"
+                style={{ color: "white" }}
+              >
+                <i className="fab fa-facebook-f" />
+              </a>
             </div>
             <div className="col-1">
               <a

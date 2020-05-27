@@ -53,17 +53,9 @@ class Login extends React.Component {
         <div className="container content">
           <div className="form-check my-5">
             <div className="col-12 text-center my-5">
-              <button className="btn btn-info btn-lg mx-2" type="submit">
-                Zaloguj się
-              </button>
-
-              <button
-                className="btn btn-info btn-lg mx-2"
-                type="submit"
-                disabled
-              >
-                Rejestracja
-              </button>
+              <button className="btn btn-info btn-lg mx-2" type="submit" disabled> Zaloguj się </button>
+                        
+              <a href="rejestracja" className="btn btn-info btn-lg mx-2" type="submit"> Rejestracja </a>
             </div>
 
             <form onSubmit={this.handleSubmit}>

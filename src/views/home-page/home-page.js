@@ -6,9 +6,9 @@ class Homepage extends Component{
         return(
             <div className="page" id="homepage">
                 <div className="menu">
-                    <button className="btn btn-light">Dowiedz się więcej</button>
-                    <button className="btn btn-secondary" >Zamieść ogłoszenie</button>
-                    <button className="btn btn-primary">Znajdź pracę</button>
+                    <a href="login" className="btn btn-light" type="submit">Logowanie/Rejestracja </a>
+                    <a href="addoffers" className="btn btn-secondary" type="submit">Zamieść ogłoszenie</a>
+                    <a href="praca" className="btn btn-primary" type="submit">Znajdź pracę</a>
                 </div>
                 <div className="img"></div> 
                 

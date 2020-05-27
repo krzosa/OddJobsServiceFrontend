@@ -18,12 +18,7 @@ class Navbar extends Component{
                 <div className="navbar-nav">
                     <Link className="nav-link ml-5" to="praca">Oferty pracy</Link>
                     <Link className="nav-link ml-5" to="about">O nas</Link>
-                    <Link className="nav-link ml-5" to="rejestracja">Rejestracja</Link>
-                    <Link className="nav-link ml-5" to="login">Logowanie</Link>
-                    <Link className="nav-link ml-5" to="history">Historia</Link>
                     <Link className="nav-link ml-5" to="userpanel">Moje konto</Link>
-                    <Link className="nav-link ml-5" to="addoffers">Dodaj ogłoszenie</Link>
-                    <Link className="nav-link ml-5" to="homepage">Homepage2</Link>
                     <div className="ml-3">
                     <button onClick={() => {
                        axios

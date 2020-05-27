@@ -18,9 +18,9 @@ class Userpanel extends Component {
         <h4 className="text-left">{user.getFirstName() + " " + user.getLastName()}</h4>
 
                         <nav className="nav flex-column">
-                            <a className="nav-link active" href="#">Ogólne</a>
+                            <a className="nav-link active" href="userpanel">Ogólne</a>
                             <a className="nav-link" href="#">Moje ogłoszenia</a>
-                            <a className="nav-link" href="#">Moja praca</a>
+                            <a className="nav-link" href="addoffers">Dodaj ogłoszenie</a>
                         </nav>
                 </div>  
                 <div className="col-sm-8">

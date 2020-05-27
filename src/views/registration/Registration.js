@@ -105,12 +105,12 @@ class Registration extends Component {
       <div className="container " id="registration">
         <div className="form-check">
           <div className="col-12 text-center my-5">
-            <button className="btn btn-info btn-lg mx-2" type="submit" id="log">
-              {" "}
-              Zaloguj się{" "}
-            </button>
+          <a href="login" className="btn btn-info btn-lg mx-2" type="submit">
+             {" "}
+             Zaloguj się{" "}
+            </a>
 
-            <button className="btn btn-info btn-lg mx-2" type="submit" id="reg" disabled>
+            <button className="btn btn-info btn-lg mx-2" type="submit" disabled>
               {" "}
               Rejestracja{" "}
             </button>
