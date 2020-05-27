@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class AddOffers extends Component{
     render(){
         return(
-            <div className="container content mt-5 mb-5" id="add-offers">
+            <div className="container mt-5 mb-3" id="add-offers">
               <form>
 
                   <div className="form-group col-12 col-md-10 col-lg-6">

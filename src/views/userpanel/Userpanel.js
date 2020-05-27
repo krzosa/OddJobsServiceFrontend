@@ -5,11 +5,11 @@ import "./style.scss";
 class Userpanel extends Component {
     render(){
         return(
-        <div className="container content userpanel" id="userpanel">
+        <div className="container" id="userpanel">
             <div className="row">
                 <div className="col-sm-4">
-                        <br></br><br></br><br></br>
-                        <img className="w-75 h-40 rounded-circle" src={require('./avatar.jpg') } alt=""/>
+                        <br></br><br></br>
+                        <img className="w-75 h-40 rounded-circle" id="avatar" src={require('./avatar.jpg') } alt=""/>
                         <br></br><br></br>
                         <form>
                             <input type="file" id="file" name="file"/><br></br><br></br>

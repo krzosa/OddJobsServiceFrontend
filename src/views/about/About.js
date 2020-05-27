@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 class About extends Component {
     render() {
       return (
-        <div className="container content mb-5 mt-4" id="about">
+        <div className="container mb-5" id="about">
             <div className="row">
+                <img className="w-100 mb-2" id="aboutjpg" src={require('./odds.png') } alt=""/>
                 <div className="col-sm-8">
                     <h1>Co robimy?</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -21,9 +22,9 @@ class About extends Component {
                 </div>
             </div>
             <h2>Zobacz najciekawsze oferty</h2>
-            <div className="row">
-                <div className="col">
-                    <div className="card" id="card1">
+            <div className="row mt-3">
+                <div className="col-xs-4 col-sm-4">
+                    <div className="card mb-2" id="card1">
                         <img className="card-img-top" src="" alt="Card cap"/>
                         <div className="card-body">
                             <h5 className="card-title">Card title</h5>
@@ -32,8 +33,8 @@ class About extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="col">
-                <div className="card" id="card2">
+                <div className="col-xs-4 col-sm-4">
+                <div className="card mb-2" id="card2">
                         <img className="card-img-top" src="" alt="Card cap"/>
                         <div className="card-body">
                             <h5 className="card-title">Card title</h5>
@@ -42,8 +43,8 @@ class About extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="col">
-                <div className="card" id="card3">
+                <div className="col-xs-4 col-sm-4">
+                <div className="card mb-2" id="card3">
                         <img className="card-img-top" src="" alt="Card cap"/>
                         <div className="card-body">
                             <h5 className="card-title">Card title</h5>
