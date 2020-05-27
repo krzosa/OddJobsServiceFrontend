@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import './Navbar.scss'
+import auth from "../../Auth/Auth";
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 class Navbar extends Component{
     render(){
@@ -20,6 +23,18 @@ class Navbar extends Component{
                     <Link className="nav-link ml-5" to="history">Historia</Link>
                     <Link className="nav-link ml-5" to="userpanel">Moje konto</Link>
                     <Link className="nav-link ml-5" to="addoffers">Dodaj ogłoszenie</Link>
+                    <Link className="nav-link ml-5" to="homepage">Homepage2</Link>
+                    <div className="ml-3">
+                    <button onClick={() => {
+                       axios
+                       .get("http://149.156.146.249:60021/api/logout")
+                       .then(resp => console.log(resp))
+                       .catch(err => console.log(err));
+                      auth.logout();
+                      Cookies.remove('userName');
+                    }}>Logout</button>
+                    </div>
+
                 </div>
               </div>
             </nav>

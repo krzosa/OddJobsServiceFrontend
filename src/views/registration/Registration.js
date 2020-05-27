@@ -4,6 +4,10 @@ import axios from "axios";
 import { FunctionRegistration } from "./FunctionRegistration";
 import { AlertFile } from "./AlertFile";
 
+import auth from '../../Auth/Auth';
+import Userpanel from '../userpanel/Userpanel';
+
+
 class Registration extends Component {
   state = {
     email: "",
@@ -15,6 +19,7 @@ class Registration extends Component {
     phoneNumber: "",
     checked: false
   };
+  
 
   hangleChangeEmail = (e) => {
     this.setState({ email: e.target.value });
@@ -53,6 +58,11 @@ class Registration extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
+    const headers = {
+      "Content-Type": "application/json",
+    };
+
+
     if (
       FunctionRegistration(
         this.state.firstName,
@@ -73,14 +83,16 @@ class Registration extends Component {
           lastName: this.state.lastName,
           username: this.state.userName,
           phoneNumber: this.state.phoneNumber,
-        })
+        },{headers: headers, withCredentials: true,})
         .then((res) =>
           AlertFile(
             res.data,
             this.state.email,
             this.state.password,
             this.state.passwordRepeat,
-            this.state.checked
+            this.state.checked,
+            this.state.userName,
+            this.props,
           )
         )
         .catch((err) => console.log(err));
@@ -88,6 +100,7 @@ class Registration extends Component {
   };
 
   render() {
+    if(auth.isAuthenticated() == false){
     return (
       <div className="container " id="registration">
         <div className="form-check">
@@ -204,6 +217,10 @@ class Registration extends Component {
         </div>
       </div>
     );
+  }
+  else{
+    return <Userpanel />
+  }
   }
 }
 
