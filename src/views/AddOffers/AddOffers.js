@@ -33,6 +33,7 @@ class AddOffers extends Component{
 
     render(){
         return(
+          
             <div className="container content mt-5 mb-5">
               <form onSubmit={this.handleSubmit}>
                   <div className="form-group col-12 col-md-10 col-lg-6">
