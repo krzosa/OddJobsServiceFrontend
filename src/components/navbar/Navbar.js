@@ -34,6 +34,7 @@ class Navbar extends Component{
                       Cookies.remove('userName');
                     }}>Logout</button>
                     </div>
+
                 </div>
               </div>
             </nav>

@@ -12,7 +12,7 @@ export function Frame(date) {
   // const hoursMinutesSeconds =   dateTime[3] + ":" + dateTime[4] + ":" + dateTime[5];
 
   return (
-    <div className="container mt-2 ">
+    <div className="container mt-2 " id="offers-frame">
       <div className="row">
         <div className="card mb-3 col-12" style={{ width: "540px" }}>
           <div className="row no-gutters">
