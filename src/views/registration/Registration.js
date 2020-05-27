@@ -19,6 +19,7 @@ class Registration extends Component {
     phoneNumber: "",
     checked: false
   };
+  
 
   hangleChangeEmail = (e) => {
     this.setState({ email: e.target.value });
@@ -57,6 +58,11 @@ class Registration extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
+    const headers = {
+      "Content-Type": "application/json",
+    };
+
+
     if (
       FunctionRegistration(
         this.state.firstName,
@@ -77,14 +83,16 @@ class Registration extends Component {
           lastName: this.state.lastName,
           username: this.state.userName,
           phoneNumber: this.state.phoneNumber,
-        })
+        },{headers: headers, withCredentials: true,})
         .then((res) =>
           AlertFile(
             res.data,
             this.state.email,
             this.state.password,
             this.state.passwordRepeat,
-            this.state.checked
+            this.state.checked,
+            this.state.userName,
+            this.props,
           )
         )
         .catch((err) => console.log(err));
