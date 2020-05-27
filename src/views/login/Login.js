@@ -4,6 +4,9 @@ import axios from "axios";
 import { AlertFile } from "./AlertFile";
 import { FunctionLogin } from "./FunctionLogin";
 
+import auth from "../../Auth/Auth";
+import Userpanel from "../userpanel/Userpanel";
+
 class Login extends React.Component {
   state = {
     name: "",
@@ -11,12 +14,10 @@ class Login extends React.Component {
     errorChecked: "",
   };
 
-  //Pobieranie nazwy użytkownika
   hangleChangeName = (e) => {
     this.setState({ name: e.target.value });
   };
 
-  //Pobieranie hasła
   handleChangePassword = (e) => {
     this.setState({ password: e.target.value });
   };
@@ -26,7 +27,6 @@ class Login extends React.Component {
     e.preventDefault();
     const headers = {
       "Content-Type": "application/json",
-      Authorization: "JWT fefege...",
     };
 
     var data = {
@@ -38,61 +38,72 @@ class Login extends React.Component {
       axios
         .post("http://149.156.146.249:60021/api/login", data, {
           headers: headers,
+          withCredentials: true,
         })
-        .then((res) => AlertFile(res))
-        .catch((err) => console.log(err));
+        .then((res) => AlertFile(res, this.props, data))
+        .catch((err) => {
+          if (err.length > 0) console.log(err);
+        });
     }
   };
 
   render() {
-    return (
-      <div className="container content">
-        <div className="form-check my-5">
-          <div className="col-12 text-center my-5">
-            <button className="btn btn-info btn-lg mx-2" type="submit">
-              Zaloguj się
-            </button>
-
-            <button className="btn btn-info btn-lg mx-2" type="submit" disabled>
-              Rejestracja
-            </button>
-          </div>
-
-          <form onSubmit={this.handleSubmit}>
-            <div className="form-group col-12 my-3 text-center mb-4">
-              <input
-                type="text"
-                onChange={this.hangleChangeName}
-                id="username"
-                placeholder="Wpisz nazwę użytkownika"
-                className="text-center col-8 col-md-6 col-lg-4"
-              />
-              <p className="text-danger" id="userNameId"></p>
-            </div>
-
-            <div className="form-group col-12 my-3 text-center mb-4">
-              <input
-                type="password"
-                onChange={this.handleChangePassword}
-                id="password"
-                placeholder="Wpisz hasło"
-                className="text-center col-8 col-md-6 col-lg-4"
-              />
-              <p className="text-danger" id="passwordId"></p>
-            </div>
-
+    if (auth.isAuthenticated() == false) {
+      return (
+        <div className="container content">
+          <div className="form-check my-5">
             <div className="col-12 text-center my-5">
+              <button className="btn btn-info btn-lg mx-2" type="submit">
+                Zaloguj się
+              </button>
+
               <button
+                className="btn btn-info btn-lg mx-2"
                 type="submit"
-                className="btn btn-info btn-lg mx-2 col-8 col-md-7 col-lg-4"
+                disabled
               >
-                Zaloguj
+                Rejestracja
               </button>
             </div>
-          </form>
+
+            <form onSubmit={this.handleSubmit}>
+              <div className="form-group col-12 my-3 text-center mb-4">
+                <input
+                  type="text"
+                  onChange={this.hangleChangeName}
+                  id="username"
+                  placeholder="Wpisz nazwę użytkownika"
+                  className="text-center col-8 col-md-6 col-lg-4"
+                />
+                <p className="text-danger" id="userNameId"></p>
+              </div>
+
+              <div className="form-group col-12 my-3 text-center mb-4">
+                <input
+                  type="password"
+                  onChange={this.handleChangePassword}
+                  id="password"
+                  placeholder="Wpisz hasło"
+                  className="text-center col-8 col-md-6 col-lg-4"
+                />
+                <p className="text-danger" id="passwordId"></p>
+              </div>
+
+              <div className="col-12 text-center my-5">
+                <button
+                  type="submit"
+                  className="btn btn-info btn-lg mx-2 col-8 col-md-7 col-lg-4"
+                >
+                  Zaloguj
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return <Userpanel />;
+    }
   }
 }
 

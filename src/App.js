@@ -19,9 +19,21 @@ import Userpanel from './views/userpanel/Userpanel';
 import AddOffers from './views/AddOffers/AddOffers';
 import NotFoundPage from './views/NotFoundPage/NotFoundPage'; 
 
+import {ProtectedRoute} from './Auth/Protected.Route';
+
+import Cookies from 'js-cookie';
+import { GetUser } from './Auth/SetUser';
+import auth from "./Auth/Auth";
+
+
 
 function App() {
-
+  if(Cookies.get('userName')){
+    GetUser();
+    auth.login(() =>{
+      return <ProtectedRoute path="/userpanel" component={Userpanel} />
+    });
+  }
   return (
     <div className="bg-light App">
       <Navbar />
@@ -34,9 +46,9 @@ function App() {
         <Route path="/history" component={History} />
         <Route path="/details" component={Details} />
         <Route path="/editProfile" component={EditProfile} />
-        <Route path="/userpanel" component={Userpanel} />
-        <Route path="/addoffers" component={AddOffers} />
-        <Route path="/notfoundpage" component={NotFoundPage} />
+        <ProtectedRoute path="/userpanel" component={Userpanel} />
+        <ProtectedRoute path="/addoffers" component={AddOffers} />
+        <Route component={NotFoundPage} />
       </Switch>
       <Footer />
     </div>

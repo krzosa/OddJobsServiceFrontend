@@ -1,11 +1,40 @@
 import React, { Component } from "react";
+import axios from 'axios';
+
+import user from '../../Auth/User'
 
 class AddOffers extends Component{
-    render(){
-        return(
-            <div className="container content mt-5 mb-5">
-              <form>
 
+    handleSubmit(e){
+      e.preventDefault();
+
+      const headers = {
+          "Content-Type": "application/json",
+        
+      }
+
+      var data2 = {
+        "title": "TiTitle 2tle 1",
+        "description": "LAAAAAAAAAAAAAAAAAAA",
+        "advertisementCategory": "ANIMALSCARE",
+        "city": "WARSZAWA",
+        "workingHours": "FULL_TIME",
+        "contractType": "MANDATORY_CONTRACT",
+        "reward": "25",
+      }
+
+      
+      axios.post("http://149.156.146.249:60021/api/advertisements",data2,{
+        headers: headers, withCredentials: true},
+      )
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
+    }
+
+    render(){
+        return(    
+            <div className="container content mt-5 mb-5">
+              <form onSubmit={this.handleSubmit}>
                   <div className="form-group col-12 col-md-10 col-lg-6">
                     <label forHtml="jobName" class="mt-2">Nazwa pracy:</label>
                     <input type="text" className="form-control" id="jobName"></input>

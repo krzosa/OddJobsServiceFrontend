@@ -1,0 +1,95 @@
+.pagination {
+    margin: 15px auto;
+    width: 15%;
+    display: flex;
+    list-style: none;
+    outline: none;
+  }
+  .pagination > .active > a{
+    background-color: #47ccde ;
+    border-color: #47ccde ;
+    color: #fff;
+  }
+  .pagination > li > a{
+    border: 1px solid #47ccde ;
+    padding: 5px 10px;
+    outline: none;
+    cursor: pointer;
+  }
+  .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
+    background-color: #47ccde ;
+    border-color: #47ccde;
+    outline: none ;
+  }
+  .pagination > li > a, .pagination > li > span{
+    color: #47ccde
+  }
+  .pagination > li:first-child > a, .pagination > li:first-child > span, .pagination > li:last-child > a, .pagination > li:last-child > span{
+    border-radius: unset
+  }
+
+  @media only screen and ( max-width: 64.063em ) {  
+    .pagination li:first-child,
+    .pagination li:last-child {
+      /* screen readers only */
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+  
+    .pagination li:nth-of-type(2) a { border-left-width: 1px; }
+  
+  }
+  
+  @media only screen and ( max-width: 40.063em ) {  
+    .pagination li {
+      /* screen readers only */
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+  
+    .pagination li.current,
+    .pagination li:first-of-type,
+    .pagination li:last-of-type,
+    .pagination li:nth-of-type(2),
+    .pagination li:nth-last-of-type(2){
+      position: initial;
+      top: initial;
+      left: initial;
+    }
+  
+    .pagination li:nth-of-type(2) a { border-left-width: 0; }
+  
+  }
+  
+  @media only screen and ( max-width: 30.063em ) {  
+    
+    h1 { font-size: 1.35em !important; }
+    
+    .pagination li:first-child,
+    .pagination li:last-child {
+      /* screen readers only */
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+  
+    .pagination li:nth-of-type(2) a { border-left-width: 1px; }
+  
+  }
+  
+  @media only screen and ( max-width: 15.063em ) {  /* For watches? */
+    
+    .pagination li { width: 50%;}
+    
+    .pagination li.current { 
+      order: 2;
+      width: 100%;
+      border-left-width: 1px;
+        
+    }  
+
+  }
+
+

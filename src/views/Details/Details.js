@@ -1,107 +1,132 @@
 import React, { Component } from "react";
 import IMG from "./../Offers/images/allegro.jpg";
+import axios from "axios";
+import { CreatePolishString } from "./CreatePolishString";
 
-class Details extends Component {
+// CreatePolishString     funkcja, która konwertuje ang na PL
+// urlWithDetailsId       zmienna która przechowuje adres np. /details/1
+// createUrlWithId        zmienna która ucina /details
+
+export default class Details extends Component {
+  state = {
+    table: "",
+  };
+
+  componentDidMount() {
+    let urlWithDetailsId = this.props.location.pathname;
+    let createUrlWithId;
+
+    if (urlWithDetailsId.includes("/details"))
+      createUrlWithId = this.props.location.pathname.substr(8);
+
+    axios
+      .get("http://149.156.146.249:60021/api/advertisements" + createUrlWithId)
+      .then((res) => this.setState({ table: res.data }))
+      .catch((err) => console.log(err));
+  }
+
   render() {
     return (
-      <div className="container ">
+      <div className="container " id="details">
         <div className="card mb-6 mt-3">
           <div className="row no-gutters border-bottom">
             <div className="col-md-2">
               <img src={IMG} className="card-img" alt="..." />
             </div>
             <div className="col-md-7 form-group text-center mt-4">
-              <h5 className="card-title">
-                Kierownik Schroniska dla osób bezdomnych z usługami opiekuńczymi
-              </h5>
+              <h5 className="card-title">{this.state.table.title}</h5>
             </div>
             <div className="border-left">
               <div className="col-md form-group text-center mt-4 ">
-                <i className="fas fa-money-bill-wave">80-90zł brutto/godz.</i>
+                <i className="fas fa-money-bill-wave">
+                  {" "}
+                  {this.state.table.reward}zł brutto/godz.
+                </i>
               </div>
             </div>
           </div>
 
-          <div className="row no-gutters text-center mt-3">
-            <div className="col-md-3 ml-5">
-              <i className="fas fa-map-marker-alt">Miejsce</i>
-            </div>
-
-            <div className="col-md-3 ml-5">
-              <i className="fas fa-newspaper">Umowa o pracę</i>
-            </div>
-
-            <div className="col-md-3 ml-5">
-              <i className="fas fa-chart-line">Praca fizyczna</i>
-            </div>
-          </div>
-
           <div className="row no-gutters text-center mt-3 mb-3">
-            <div className="col-md-3 ml-5">
-              <i className="fas fa-clock">Pełny etat</i>
+            <div className="col-md-2 ml-5">
+              <i className="fas fa-map-marker-alt"> {this.state.table.city}</i>
+            </div>
+
+            <div className="col-md-2 ml-5">
+              <i className="fas fa-newspaper">
+                {" "}
+                {CreatePolishString(this.state.table.contractType)}
+              </i>
             </div>
 
             <div className="col-md-3 ml-5">
-              <i className="fas fa-calendar-alt">Ważna jeszcze 20dni</i>
+              <i className="fas fa-chart-line">
+                {" "}
+                {CreatePolishString(this.state.table.advertisementCategory)}
+              </i>
+            </div>
+
+            <div className="col-md-2 ml-5">
+              <i className="fas fa-clock">
+                {" "}
+                {CreatePolishString(this.state.table.workingHours)}
+              </i>
             </div>
           </div>
-        </div>
 
+          {/*
+            <div className="col-md-3 ml-5">
+    <i className="fas fa-calendar-alt"> {}</i>
+</div>*/}
+        </div>
         <div className="border-top mt-3">
           <div className="card border-light  no-gutters mb-3 d-flex">
             <div className="card-header text-center  bg-primary text-white ">
-              Ward Personnel Limited
+              {/*Ward Personnel Limited*/}
               <br />
-              (Nazwa firmy)
+              {/*(Nazwa firmy)*/}
             </div>
             <div className="card-body">
               <h5 className="card-title">Opis stanowiska:</h5>
-              <p className="card-text">
-                <ul>
-                  <li>Praca przy produkcji rozdzielnic</li>
-                  <li>
-                    Budowa i łączenie rozdzielnic i skrzynek elektrycznych,
-                  </li>
-                  <li>
-                    Montaż pulpitów kontrolno-sterowniczych zgodnie z
-                    dokumentacją techniczną, schematami elektrycznymi, oraz
-                    rysunkami gabarytowymi
-                  </li>
-                  <li>Montaż materiałów pomocniczych zgodnie ze schematami,</li>
-                </ul>
-              </p>
+              <p className="card-text" />
+              <ul>
+                <li>Praca przy produkcji rozdzielnic</li>
+                <li>Budowa i łączenie rozdzielnic i skrzynek elektrycznych,</li>
+                <li>
+                  Montaż pulpitów kontrolno-sterowniczych zgodnie z dokumentacją
+                  techniczną, schematami elektrycznymi, oraz rysunkami
+                  gabarytowymi
+                </li>
+                <li>Montaż materiałów pomocniczych zgodnie ze schematami,</li>
+              </ul>
               <h5 className="card-title">Wymagania</h5>
-              <p className="card-text">
-                <ul>
-                  <li>Wykształcenie kierunkowe,</li>
-                  <li>
-                    Doświadczenie w pracy na stanowisku prefabrykacji szaf i
-                    pulpitów sterowniczych oraz rozdzielnic elektrycznychjest
-                    konieczne{" "}
-                  </li>
-                  <li>Umiejętność czytania schematów elektrycznych,</li>
-                  <li>
-                    Komunikatywna znajomość języka angielskiego jest wymagana,
-                  </li>
-                </ul>
-              </p>
+              <p className="card-text" />
+              <ul>
+                <li>Wykształcenie kierunkowe,</li>
+                <li>
+                  Doświadczenie w pracy na stanowisku prefabrykacji szaf i
+                  pulpitów sterowniczych oraz rozdzielnic elektrycznychjest
+                  konieczne{" "}
+                </li>
+                <li>Umiejętność czytania schematów elektrycznych,</li>
+                <li>
+                  Komunikatywna znajomość języka angielskiego jest wymagana,
+                </li>
+              </ul>
               <h5 className="card-title">Oferujemy</h5>
-              <p className="card-text">
-                <ul>
-                  <li>
-                    Oferujemy atrakcyjne zarobki w wysokości € 20.00 na godzinę{" "}
-                  </li>
-                  <li>Od 40 do 50 godzin tygodniowo </li>
-                  <li>
-                    Odbiór z lotniska i pomoc w zakwaterowaniu oraz we
-                    wszystkich sprawach administracyjnych,{" "}
-                  </li>
-                  <li>
-                    Ciekawą pracę w projektach dla międzynarodowych
-                    kontrahentów,
-                  </li>
-                </ul>
-              </p>
+              <p className="card-text" />
+              <ul>
+                <li>
+                  Oferujemy atrakcyjne zarobki w wysokości € 20.00 na godzinę{" "}
+                </li>
+                <li>Od 40 do 50 godzin tygodniowo </li>
+                <li>
+                  Odbiór z lotniska i pomoc w zakwaterowaniu oraz we wszystkich
+                  sprawach administracyjnych,{" "}
+                </li>
+                <li>
+                  Ciekawą pracę w projektach dla międzynarodowych kontrahentów,
+                </li>
+              </ul>
               Osoby zainteresowane prosimy o przesyłanie aplikacji klikając w
               przycisk aplikowania.
               <br />
@@ -125,7 +150,6 @@ class Details extends Component {
             </div>
           </div>
         </div>
-
         <div className="card border-light mb-5">
           <div className="card-body text-center  border-bottom">
             <button
@@ -139,13 +163,19 @@ class Details extends Component {
           <div className="border-bottom">
             <div className="row text-center ">
               <div className="col-4 border-right">
-                <h5><i className="far fa-star" /> Zapisz</h5>
+                <h5>
+                  <i className="far fa-star" /> Zapisz
+                </h5>
               </div>
               <div className="col-4 border-right">
-                <h5><i className="fas fa-print" /> Drukuj</h5>
+                <h5>
+                  <i className="fas fa-print" /> Drukuj
+                </h5>
               </div>
               <div className="col-4">
-                <h5><i className="fas fa-share-alt" /> Podziel się</h5>
+                <h5>
+                  <i className="fas fa-share-alt" /> Podziel się
+                </h5>
               </div>
             </div>
           </div>
@@ -162,5 +192,3 @@ class Details extends Component {
     );
   }
 }
-
-export default Details;
