@@ -21,8 +21,19 @@ import NotFoundPage from './views/NotFoundPage/NotFoundPage';
 
 import {ProtectedRoute} from './Auth/Protected.Route';
 
-function App() {
+import Cookies from 'js-cookie';
+import { GetUser } from './Auth/SetUser';
+import auth from "./Auth/Auth";
 
+
+
+function App() {
+  if(Cookies.get('userName')){
+    GetUser();
+    auth.login(() =>{
+      return <ProtectedRoute path="/userpanel" component={Userpanel} />
+    });
+  }
   return (
     <div className="bg-light App">
       <Navbar />

@@ -13,6 +13,8 @@
     "chai-as-promised": "7.1.1",
     "chromedriver": "^81.0.0",
     "ejs": "^3.0.1",
+
+    "js-cookie": "^2.2.1",
     "express": "^4.17.1",
     "eyes.selenium": "^3.8.11",
     "react": "^16.13.0",

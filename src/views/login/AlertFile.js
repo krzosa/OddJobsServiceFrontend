@@ -1,11 +1,12 @@
 import auth from "../../Auth/Auth";
 import { GetUser } from "../../Auth/SetUser";
+import Cookies from 'js-cookie';
 
 export const AlertFile = (res, props, data) => {
   if (res.data.success == "true") {
-    //alert("Zalogowano");
-    GetUser(data);
-
+    Cookies.set('userName',data['username']);
+    GetUser();
+    
     auth.login(() => {
       props.history.push("/userpanel");
     });
