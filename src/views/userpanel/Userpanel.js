@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./style.scss";
-
+import user from '../../Auth/User';
 
 class Userpanel extends Component {
-    render(){
+    render(){        
         return(
         <div className="container" id="userpanel">
             <div className="row">
@@ -15,7 +15,7 @@ class Userpanel extends Component {
                             <input type="file" id="file" name="file"/><br></br><br></br>
                         </form>
 
-                        <h4 className="text-left">John Doe</h4>
+        <h4 className="text-left">{user.getFirstName() + " " + user.getLastName()}</h4>
 
                         <nav className="nav flex-column">
                             <a className="nav-link active" href="#">Ogólne</a>
@@ -29,27 +29,22 @@ class Userpanel extends Component {
                         <div className="row">
                             <div className="col">
                                 <label htmlFor="imie">Imię:</label>
-                                <input type="text" className="form-control" id="imie" placeholder="Imię" name="imie" readOnly/><br></br>
+                                <input type="text" className="form-control" id="imie" placeholder={user.getFirstName()} name="imie" readOnly/><br></br>
                                 <label htmlFor="nazwisko">Nazwisko:</label>
-                                <input type="text" className="form-control" id="nazwisko" placeholder="Nazwisko" name="nazwisko" readOnly/><br></br>
+                                <input type="text" className="form-control" id="nazwisko" placeholder={user.getLastName()} name="nazwisko" readOnly/><br></br>
+                                <label htmlFor="imie">Konto:</label>
+                                <input type="text" className="form-control" id="konto" placeholder={user.getUserName()} name="konto" readOnly/><br></br>
                                 <label htmlFor="nazwisko">Hasło:</label>
-                                <input type="password" className="form-control" id="haslo" placeholder="********" name="haslo"/><br></br>
+                                <input type="password" className="form-control" id="haslo" placeholder={user.getPassword()} name="haslo"/><br></br>
                                 <label htmlFor="email">Email:</label>
-                                <input type="email" className="form-control" id="email" placeholder="Email" name="email"/><br></br>
+                                <input type="email" className="form-control" id="email" placeholder={user.getEmail()} name="email"/><br></br>
                                 <label htmlFor="tel">Tel:</label>
-                                <input type="tel" className="form-control" id="tel" placeholder="Tel" name="tel"/><br></br>
+                                <input type="tel" className="form-control" id="tel" placeholder={user.getPhoneNumber()} name="tel"/><br></br>
                                 <button type="button" className="btn btn-primary">Zapisz</button>
                                 <button type="button" className="btn btn-light">Anuluj</button>
                                 <br></br><br></br><br></br>
                             </div>
-                            <div className="col">
-                                <label htmlFor="ulica">Ulica:</label>
-                                <input type="text" className="form-control" id="ulica" placeholder="Ulica" name="ulica"/><br></br>
-                                <label htmlFor="miasto">Miasto:</label>
-                                <input type="text" className="form-control" id="miasto" placeholder="Miasto" name="miasto"/><br></br>
-                                <label htmlFor="kod">Kod pocztowy:</label>
-                                <input type="text" className="form-control" id="kod" placeholder="30-012" name="kod" size="8"/><br></br>
-                            </div>
+                            
                         </div>
                     </form>
                 </div>    

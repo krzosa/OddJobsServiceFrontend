@@ -1,4 +1,9 @@
-export function AlertFile(data, email, password, passwordRepeat, checked) {
+import auth from "../../Auth/Auth";
+import { GetUser } from "../../Auth/SetUser";
+import Cookies from 'js-cookie';
+import axios from 'axios';
+
+export function AlertFile(data, email, password, passwordRepeat, checked,userName,props) {
   let elFirstName = document.getElementById("errorFirstName");
   let elLastName = document.getElementById("errorLastName");
   let elUserName = document.getElementById("errorUserName");
@@ -32,6 +37,8 @@ export function AlertFile(data, email, password, passwordRepeat, checked) {
       elUserName.innerHTML = "Nazwa użytkownika jest za krótka";
     else if (data.includes("username is too long"))
       elUserName.innerHTML = "Nazwa użytkownika jest za długa";
+    else if (data.includes("User with given username already exists"))
+      elUserName.innerHTML = "Użytkownik o podanej nazwie użytkownika istnieje"
     else elUserName.innerHTML = "";
 
     //walidacja telefonu
@@ -39,6 +46,8 @@ export function AlertFile(data, email, password, passwordRepeat, checked) {
       elPhoneNumber.innerHTML = "Numer telefonu jest za krótki";
     else if (data.includes("phone number too long"))
       elPhoneNumber.innerHTML = "Numer telefonu jest za długi";
+    else if(data.includes("User with given phone number already exists"))
+      elPhoneNumber.innerHTML = "Użytkownik o podanym numerze telefonu istnieje";
     else elPhoneNumber.innerHTML = "";
 
     //walidacja hasła
@@ -50,6 +59,8 @@ export function AlertFile(data, email, password, passwordRepeat, checked) {
 
     //walidacja email
     if (!email) elEmail.innerHTML = "Uzupełnij email";
+    else if (data.includes("User with given email already exists"))
+      elEmail.innerHTML = "Użytkownik o podanym adresie email istnieje";
     else elEmail.innerHTML = "";
 
     //walidacja hasel
@@ -68,6 +79,21 @@ export function AlertFile(data, email, password, passwordRepeat, checked) {
     alert("Nie zarejestrowano");
   } else {
     alert("Zarejestrowano");
+    Cookies.set('userName',userName);
+    GetUser();
+    auth.login(() => {
+      props.history.push("/userpanel");
+    });
+
+
+    axios
+        .post("http://149.156.146.249:60021/api/login", {username: userName, password: password}, {
+          withCredentials: true,
+        })
+        .catch((err) => {
+          if (err.length > 0) console.log(err);
+        });
+
     //czyszczenie pól
     elFirstName.innerHTML = "";
     elLastName.innerHTML = "";

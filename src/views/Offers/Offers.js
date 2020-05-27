@@ -28,7 +28,7 @@ class Offers extends Component {
 
     offset: 0,
     elements: [],
-    perPage: 1,
+    perPage: 5,
     currentPage: 0,
   };
 
@@ -97,7 +97,7 @@ class Offers extends Component {
     });
   };
 
-  render() {    
+  render() {
     let paginationElement;
     if (this.state.pageCount > 1) {
       paginationElement = (
