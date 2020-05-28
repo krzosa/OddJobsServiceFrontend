@@ -4,16 +4,11 @@ import { Link } from 'react-router-dom';
 class About extends Component {
     render() {
       return (
-        <div className="container mb-5" id="about">
+        <div className="container content mb-5 mt-4">
             <div className="row">
-                <img className="w-100 mb-2" id="aboutjpg" src={require('./odds.png') } alt=""/>
                 <div className="col-sm-8">
                     <h1>Co robimy?</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                         ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                          laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                           voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                           n proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p>Jesteśmy portalem zrzeszającym użytkowników zarówno szukających pracy jak i tych którzy tę pracę oferują. Na naszym portalu znajdziesz setki ogłoszeń pracy od zweryfikowanych pracodawców. </p>
                 </div>
                 <div className="col-sm-4">
                     <h1>Kontakt</h1>
@@ -22,41 +17,37 @@ class About extends Component {
                 </div>
             </div>
             <h2>Zobacz najciekawsze oferty</h2>
-            <div className="row mt-3">
-                <div className="col-xs-4 col-sm-4">
-                    <div className="card mb-2" id="card1">
-                        <img className="card-img-top" src="" alt="Card cap"/>
+            <div className="row">
+                <div className="col">
+                    <div className="card">
                         <div className="card-body">
-                            <h5 className="card-title">Card title</h5>
-                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" className="btn btn-primary">Go somewhere</a>
+                            <img className="card-img-top" src="https://i.ibb.co/7rVT1m2/854081161001-5712841741001-5712830683001-vs.jpg" alt="Card cap"/>
+                            <h5 className="card-title text-center mt-1">Koszenie Trawników</h5>
+                            
                         </div>
                     </div>
                 </div>
-                <div className="col-xs-4 col-sm-4">
-                <div className="card mb-2" id="card2">
-                        <img className="card-img-top" src="" alt="Card cap"/>
+                <div className="col">
+                <div className="card">
                         <div className="card-body">
-                            <h5 className="card-title">Card title</h5>
-                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" className="btn btn-primary">Go somewhere</a>
+                            <img className="card-img-top" src="https://i.ibb.co/6ntSdQ9/unnamed-1.jpg" alt="Card cap"/>
+                            <h5 className="card-title text-center mt-2">Tworzenie Stron</h5>
                         </div>
                     </div>
                 </div>
-                <div className="col-xs-4 col-sm-4">
-                <div className="card mb-2" id="card3">
-                        <img className="card-img-top" src="" alt="Card cap"/>
+                <div className="col">
+                <div className="card">
                         <div className="card-body">
-                            <h5 className="card-title">Card title</h5>
-                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" className="btn btn-primary">Go somewhere</a>
+                        <   img className="card-img-top" src="https://i.ibb.co/C65sFCh/cropped-serwis-naprawa-gsm.jpg" alt="Card cap"/>
+                            <h5 className="card-title text-center mt-4">Naprawa Telefonów</h5>
+                            
                         </div>
                     </div>
                 </div>
             </div>
             <div className="row">
                 <div className="col">
-                    <h2 id="dodaj"><Link to="rejestracja">...lub dodaj własną</Link></h2>
+                    <h2><Link to="rejestracja">...lub dodaj własną</Link></h2>
                 </div>
             </div>
         </div>
