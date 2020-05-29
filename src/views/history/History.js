@@ -17,8 +17,13 @@ class History extends Component {
   };
 
   receiveData(url) {
+    const headers = {
+      "Content-Type": "application/json",
+    };
+
     axios
-      .get(url + Cookies.get('userName'))
+      .get(url + Cookies.get('userName'),{headers: headers,
+        withCredentials: true,})
       .then((json) =>
         this.setState(
           {
