@@ -11,18 +11,23 @@ export function Frame(date) {
 
   function deleteOffer() {
     console.log(advertisementID);
-    
+
     const headers = {
       "Content-Type": "application/json",
     };
 
-    
-      axios.delete("http://149.156.146.249:60021/api/reported/"+advertisementID,{
-        headers: headers, 
-      withCredentials: true,
-    }
-      ).then(res => console.log(res))
-      
+    axios
+      .delete(
+        "http://149.156.146.249:60021/api/advertisements?id=" + advertisementID,
+        {
+          headers: headers,
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        if (res.data == true) window.location.reload(false);
+      })
+      .catch((err) => console.log(err));
   }
 
   return (
@@ -36,7 +41,9 @@ export function Frame(date) {
         <p className="card-text">
           <small className="text-muted">{timeYearMonthDay}</small>
         </p>
-        <button onClick={deleteOffer}>Delete</button>
+        <button className="btn btn-primary" onClick={deleteOffer}>
+          Usuń ogłoszenie
+        </button>
       </div>
     </div>
   );
