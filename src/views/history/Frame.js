@@ -17,12 +17,13 @@ export function Frame(date) {
     };
 
     
-      axios.delete("http://149.156.146.249:60021/api/reported/"+advertisementID,{
+      axios.delete("http://149.156.146.249:60021/api/advertisements?id="+advertisementID,{
         headers: headers, 
       withCredentials: true,
     }
       ).then(res => console.log(res))
       
+      window.location.reload(false);
   }
 
   return (
@@ -36,7 +37,9 @@ export function Frame(date) {
         <p className="card-text">
           <small className="text-muted">{timeYearMonthDay}</small>
         </p>
-        <button onClick={deleteOffer}>Delete</button>
+        <button
+        className="btn btn-primary"
+        onClick={deleteOffer}>Usuń ogłoszenie</button>
       </div>
     </div>
   );
