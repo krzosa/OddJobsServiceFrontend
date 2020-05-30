@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import {Frame} from './Frame';
-import Cookies from 'js-cookie';
+import { Frame } from "./Frame";
+import Cookies from "js-cookie";
 import ReactPaginate from "react-paginate";
-import axios from 'axios';
-
+import axios from "axios";
+import NullData from "./NullData";
 
 class History extends Component {
   state = {
@@ -22,8 +22,10 @@ class History extends Component {
     };
 
     axios
-      .get(url + Cookies.get('userName'),{headers: headers,
-        withCredentials: true,})
+      .get(url + Cookies.get("userName"), {
+        headers: headers,
+        withCredentials: true,
+      })
       .then((json) =>
         this.setState(
           {
@@ -55,8 +57,6 @@ class History extends Component {
     });
   };
 
-
-
   render() {
     let paginationElement;
     if (this.state.pageCount > 1) {
@@ -78,12 +78,16 @@ class History extends Component {
       );
     }
 
-    return (
-      <div className="container" id="history">
-        {this.state.elements}
-        {paginationElement}
-      </div>
-    );
+    if (this.state.contacts.length > 0) {
+      return (
+        <div className="container" id="history">
+          {this.state.elements}
+          {paginationElement}
+        </div>
+      );
+    } else {
+      return <NullData />;
+    }
   }
 }
 
