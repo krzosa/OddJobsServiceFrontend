@@ -19,7 +19,7 @@ class Userpanel extends Component {
 
                         <nav className="nav flex-column">
                             <a className="nav-link active" href="userpanel">Ogólne</a>
-                            <a className="nav-link" href="#">Moje ogłoszenia</a>
+                            <a className="nav-link" href="history">Moje ogłoszenia</a>
                             <a className="nav-link" href="addoffers">Dodaj ogłoszenie</a>
                         </nav>
                 </div>  
