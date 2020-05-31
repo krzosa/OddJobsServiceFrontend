@@ -33,7 +33,6 @@ class Navbar extends Component{
                        .catch(err => console.log(err));
                       auth.logout();
                       Cookies.remove('userName');
-                      location.reload();
                     }}>Logout</button>
                     </div>
                 </div>
