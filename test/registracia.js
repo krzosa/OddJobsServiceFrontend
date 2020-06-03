@@ -11,7 +11,7 @@ const {By, until} = webdriver
 
 
 
-describe('app', function () {
+describe('registracia', function () {
   let driver;
 
   this.timeout(60000);

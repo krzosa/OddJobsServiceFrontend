@@ -10,7 +10,7 @@ require('chromedriver');
 
 const {By, until} = webdriver
 
-describe('app', function () {
+describe('test', function () {
   let driver;
 
   this.timeout(60000)
@@ -27,6 +27,6 @@ describe('app', function () {
 
   it('start and stop, Test=1', async function () {
     const title = await driver.getTitle();
-    expect(title).to.equal("React App");
+    expect(title).to.equal("Prace dorywcze");
   });
 });

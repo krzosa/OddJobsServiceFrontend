@@ -1,4 +1,5 @@
 const {describe, it, before, after} = require('mocha');
+const expect = require('chai').expect;
 const {Eyes} = require('eyes.selenium');
 const path = require('path');
 const express = require('express');
@@ -10,7 +11,7 @@ const {By, until} = webdriver
 
 
 
-describe('app', function () {
+describe('oferty pracy', function () {
   let driver;
 
   this.timeout(60000);
@@ -29,6 +30,11 @@ describe('app', function () {
   it('All button should work', async function () {
    await driver.findElement(By.linkText("Oferty pracy")).click();
    await delay(3000);
-    
+  
+   let formFilter = await driver.findElement(By.xpath("//input[@placeholder='Miasto']")).isDisplayed();
+   expect(formFilter).to.equal(true);
+
+   formFilter = await driver.findElement(By.xpath("//input[@placeholder='Miasto']")).isDisplayed();
+   expect(formFilter).to.equal(true);
   });
 });

@@ -11,7 +11,7 @@ const {By, until} = webdriver
 
 
 
-describe('app', function () {
+describe('logowanie', function () {
   let driver;
 
   this.timeout(60000);
@@ -37,7 +37,7 @@ describe('app', function () {
    await driver.findElement(By.id("password")).sendKeys("Vasya");
    await delay(3000);
 
-   await driver.findElement(By.id("zal")).click();
+   await driver.findElement(By.xpath("//div//button[@class='btn btn-info btn-lg mx-2 col-8 col-md-7 col-lg-4']")).click();
    await delay(3000);
 
    const alerttext = await driver.switchTo().alert().getText();
@@ -53,7 +53,7 @@ describe('app', function () {
     await driver.findElement(By.linkText("Logowanie")).click();
     await delay(3000);
 
-    await driver.findElement(By.id("zal")).click();
+    await driver.findElement(By.xpath("//div//button[@class='btn btn-info btn-lg mx-2 col-8 col-md-7 col-lg-4']")).click();
     await delay(3000);
 
     let texterror = await driver.findElement(By.id("userNameId")).getText();

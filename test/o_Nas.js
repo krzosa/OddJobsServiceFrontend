@@ -11,7 +11,7 @@ const {By, until} = webdriver
 
 
 
-describe('app', function () {
+describe('o Nas', function () {
   let driver;
 
   this.timeout(60000);
@@ -40,13 +40,13 @@ describe('app', function () {
    text = await driver.findElement(By.xpath("//div[2]//h1")).getText();
    expect(text).to.equal("Kontakt");
 
-   let card = await driver.findElement(By.id("card1")).isDisplayed();
+   let card = await driver.findElement(By.xpath("//div[@class='row']//img[@src='https://i.ibb.co/7rVT1m2/854081161001-5712841741001-5712830683001-vs.jpg']")).isDisplayed();
    expect(card).to.equal(true);
 
-   card = await driver.findElement(By.id("card2")).isDisplayed();
+   card = await driver.findElement(By.xpath("//div[@class='row']//img[@src='https://i.ibb.co/6ntSdQ9/unnamed-1.jpg']")).isDisplayed();
    expect(card).to.equal(true);
 
-   card = await driver.findElement(By.id("card3")).isDisplayed();
+   card = await driver.findElement(By.xpath("//div[@class='row']//img[@src='https://i.ibb.co/C65sFCh/cropped-serwis-naprawa-gsm.jpg']")).isDisplayed();
    expect(card).to.equal(true);
 
    let footer = await driver.findElement(By.id("kan")).getText();
@@ -77,7 +77,7 @@ describe('app', function () {
     await driver.findElement(By.linkText("O nas")).click();
     await delay(1500);
 
-    await driver.findElement(By.xpath("//h2[@id='dodaj']//a")).click();
+    await driver.findElement(By.xpath("//h2//a[@href='/rejestracja']")).click();
     await delay(1500);
 
     let button = await driver.findElement(By.id("log")).isDisplayed();
