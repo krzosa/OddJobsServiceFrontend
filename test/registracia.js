@@ -172,10 +172,10 @@ describe('registracia', function () {
     await driver.findElement(By.id("email")).sendKeys("vasya@gmail.com");
     await delay(1500);
 
-    await driver.findElement(By.id("password")).sendKeys("vasya");
+    await driver.findElement(By.id("password")).sendKeys("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     await delay(1500);
 
-    await driver.findElement(By.id("passwordRepeat")).sendKeys("vasya");
+    await driver.findElement(By.id("passwordRepeat")).sendKeys("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     await delay(1500);
 
     await driver.findElement(By.xpath("//input[@type='checkbox']")).click();
@@ -199,6 +199,9 @@ describe('registracia', function () {
 
     texterror = await driver.findElement(By.id("errorPhoneNumber")).getText();
     expect(texterror).to.equal("Użytkownik o podanym numerze telefonu istnieje");
+
+    texterror = await driver.findElement(By.id("errorPassword")).getText();
+    expect(texterror).to.equal("Hasło jest za długie");
 
     await driver.findElement(By.xpath("//a[@class='navbar-brand']")).click();
     await delay(1500);
@@ -251,6 +254,51 @@ describe('registracia', function () {
 
     await driver.findElement(By.xpath("//a[@class='navbar-brand']")).click();
     await delay(1500);
-
    });
+
+   it('Check error input, TestId=4', async function () {
+    await driver.findElement(By.linkText("Rejestracja")).click();
+    await delay(1500);
+
+    await driver.findElement(By.id("firstName")).sendKeys("vasya");
+    await delay(1500);
+
+    await driver.findElement(By.id("lastName")).sendKeys("vasya");
+    await delay(1500);
+
+    await driver.findElement(By.id("userName")).sendKeys("vasya2");
+    await delay(1500);
+
+    await driver.findElement(By.id("phoneNumber")).sendKeys("555555555555");
+    await delay(1500);
+
+    await driver.findElement(By.id("email")).sendKeys("a@gmail.com");
+    await delay(1500);
+
+    await driver.findElement(By.id("password")).sendKeys("v");
+    await delay(1500);
+
+    await driver.findElement(By.id("passwordRepeat")).sendKeys("v");
+    await delay(1500);
+
+    await driver.findElement(By.xpath("//input[@type='checkbox']")).click();
+    await delay(1500);
+
+    await driver.findElement(By.id("zareg")).click();
+    await delay(1500);
+
+    const alerttext = await driver.switchTo().alert().getText();
+    expect(alerttext).to.equal("Nie zarejestrowano");
+    await driver.switchTo().alert().accept();
+
+    let texterror = await driver.findElement(By.id("errorPhoneNumber")).getText();
+    expect(texterror).to.equal("Numer telefonu jest za długi");
+
+    texterror = await driver.findElement(By.id("errorPassword")).getText();
+    expect(texterror).to.equal("Hasło jest za krótkie");
+
+    await driver.findElement(By.xpath("//a[@class='navbar-brand']")).click();
+    await delay(1500);
+   });
+
 });
