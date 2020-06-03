@@ -100,4 +100,157 @@ describe('registracia', function () {
     await delay(1500);
      
    });
+
+   it('Check error input, TestId=1', async function () {
+    await driver.findElement(By.linkText("Rejestracja")).click();
+    await delay(1500);
+
+    await driver.findElement(By.id("firstName")).sendKeys("Vasya1");
+    await delay(1500);
+
+    await driver.findElement(By.id("lastName")).sendKeys("Vasya1");
+    await delay(1500);
+
+    await driver.findElement(By.id("userName")).sendKeys("test");
+    await delay(1500);
+
+    await driver.findElement(By.id("phoneNumber")).sendKeys("1111111");
+    await delay(1500);
+
+    await driver.findElement(By.id("email")).sendKeys("vasya@gmail.com");
+    await delay(1500);
+
+    await driver.findElement(By.id("password")).sendKeys("vasya");
+    await delay(1500);
+
+    await driver.findElement(By.id("passwordRepeat")).sendKeys("vasya");
+    await delay(1500);
+
+    await driver.findElement(By.xpath("//input[@type='checkbox']")).click();
+    await delay(1500);
+
+    await driver.findElement(By.id("zareg")).click();
+    await delay(1500);
+
+    const alerttext = await driver.switchTo().alert().getText();
+    expect(alerttext).to.equal("Nie zarejestrowano");
+    await driver.switchTo().alert().accept();
+
+    let texterror = await driver.findElement(By.id("errorFirstName")).getText();
+    expect(texterror).to.equal("Nieprawidłowe znaki");
+
+    texterror = await driver.findElement(By.id("errorLastName")).getText();
+    expect(texterror).to.equal("Nieprawidłowe znaki");
+
+    texterror = await driver.findElement(By.id("errorUserName")).getText();
+    expect(texterror).to.equal("Użytkownik o podanej nazwie użytkownika istnieje");
+
+    texterror = await driver.findElement(By.id("errorPhoneNumber")).getText();
+    expect(texterror).to.equal("Numer telefonu jest za krótki");
+
+    await driver.findElement(By.xpath("//a[@class='navbar-brand']")).click();
+    await delay(1500);
+
+   });
+
+   it('Check error input, TestId=2', async function () {
+    await driver.findElement(By.linkText("Rejestracja")).click();
+    await delay(1500);
+
+    await driver.findElement(By.id("firstName")).sendKeys("V");
+    await delay(1500);
+
+    await driver.findElement(By.id("lastName")).sendKeys("V");
+    await delay(1500);
+
+    await driver.findElement(By.id("userName")).sendKeys("t");
+    await delay(1500);
+
+    await driver.findElement(By.id("phoneNumber")).sendKeys("111111111");
+    await delay(1500);
+
+    await driver.findElement(By.id("email")).sendKeys("vasya@gmail.com");
+    await delay(1500);
+
+    await driver.findElement(By.id("password")).sendKeys("vasya");
+    await delay(1500);
+
+    await driver.findElement(By.id("passwordRepeat")).sendKeys("vasya");
+    await delay(1500);
+
+    await driver.findElement(By.xpath("//input[@type='checkbox']")).click();
+    await delay(1500);
+
+    await driver.findElement(By.id("zareg")).click();
+    await delay(1500);
+
+    const alerttext = await driver.switchTo().alert().getText();
+    expect(alerttext).to.equal("Nie zarejestrowano");
+    await driver.switchTo().alert().accept();
+
+    let texterror = await driver.findElement(By.id("errorFirstName")).getText();
+    expect(texterror).to.equal("Imie jest za krótkie");
+
+    texterror = await driver.findElement(By.id("errorLastName")).getText();
+    expect(texterror).to.equal("Nazwisko jest za krótkie");
+
+    texterror = await driver.findElement(By.id("errorUserName")).getText();
+    expect(texterror).to.equal("Nazwa użytkownika jest za krótka");
+
+    texterror = await driver.findElement(By.id("errorPhoneNumber")).getText();
+    expect(texterror).to.equal("Użytkownik o podanym numerze telefonu istnieje");
+
+    await driver.findElement(By.xpath("//a[@class='navbar-brand']")).click();
+    await delay(1500);
+
+   });
+
+   it('Check error input, TestId=3', async function () {
+    await driver.findElement(By.linkText("Rejestracja")).click();
+    await delay(1500);
+
+    await driver.findElement(By.id("firstName")).sendKeys("vasya");
+    await delay(1500);
+
+    await driver.findElement(By.id("lastName")).sendKeys("vasya");
+    await delay(1500);
+
+    await driver.findElement(By.id("userName")).sendKeys("vasya");
+    await delay(1500);
+
+    await driver.findElement(By.id("phoneNumber")).sendKeys("555555555");
+    await delay(1500);
+
+    await driver.findElement(By.id("email")).sendKeys("vasya@gmail.com");
+    await delay(1500);
+
+    await driver.findElement(By.id("password")).sendKeys("vasya");
+    await delay(1500);
+
+    await driver.findElement(By.id("passwordRepeat")).sendKeys("vasya");
+    await delay(1500);
+
+    await driver.findElement(By.xpath("//input[@type='checkbox']")).click();
+    await delay(1500);
+
+    await driver.findElement(By.id("zareg")).click();
+    await delay(1500);
+
+    const alerttext = await driver.switchTo().alert().getText();
+    expect(alerttext).to.equal("Nie zarejestrowano");
+    await driver.switchTo().alert().accept();
+
+    let texterror = await driver.findElement(By.id("errorUserName")).getText();
+    expect(texterror).to.equal("Użytkownik o podanej nazwie użytkownika istnieje");
+
+    texterror = await driver.findElement(By.id("errorPhoneNumber")).getText();
+    expect(texterror).to.equal("Użytkownik o podanym numerze telefonu istnieje");
+
+    texterror = await driver.findElement(By.id("errorEmail")).getText();
+    expect(texterror).to.equal("Użytkownik o podanym adresie email istnieje");
+
+    await driver.findElement(By.xpath("//a[@class='navbar-brand']")).click();
+    await delay(1500);
+
+   });
 });
