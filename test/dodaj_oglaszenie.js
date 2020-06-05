@@ -11,7 +11,7 @@ const {By, until} = webdriver
 
 
 
-describe('oferty pracy', function () {
+describe('dodaj oglaszenie', function () {
   let driver;
 
   this.timeout(60000);
@@ -28,13 +28,19 @@ describe('oferty pracy', function () {
 
   
   it('All button should work', async function () {
-   await driver.findElement(By.linkText("Oferty pracy")).click();
+   await driver.findElement(By.linkText("Dodaj ogłoszenie")).click();
    await delay(3000);
-  
-   let formFilter = await driver.findElement(By.xpath("//input[@placeholder='Miasto']")).isDisplayed();
-   expect(formFilter).to.equal(true);
 
-   formFilter = await driver.findElement(By.xpath("//input[@placeholder='Miasto']")).isDisplayed();
-   expect(formFilter).to.equal(true);
+   await driver.findElement(By.id("username")).sendKeys("Vasya1");
+   await delay(1500);
+
+   await driver.findElement(By.id("password")).sendKeys("aaaaaa");
+   await delay(1500);
+
+   await driver.findElement(By.xpath("//form//button")).click();
+   await delay(3000);
+
+   await driver.findElement(By.xpath("//a[@class='navbar-brand']")).click();
   });
-});
+    
+  });
