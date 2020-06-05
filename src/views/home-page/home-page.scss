@@ -12,8 +12,13 @@
         display: flex;
         justify-content: right;
         align-items: stretch;
+        
         .btn{
+            display: flex;
             width: 100%;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
         }
     }
 }

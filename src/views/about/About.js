@@ -47,7 +47,8 @@ class About extends Component {
             </div>
             <div className="row">
                 <div className="col">
-                    <h2><Link to="rejestracja">...lub dodaj własną</Link></h2>
+                    <h2 id="dodaj"><Link to="addoffers">...lub dodaj własną</Link></h2>
+
                 </div>
             </div>
         </div>
