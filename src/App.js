@@ -43,7 +43,7 @@ function App() {
         <Route path="/rejestracja" component={Registration} />
         <Route path="/about" component={About} />
         <Route path="/login" component={Login} />
-        <Route path="/history" component={History} />
+        <ProtectedRoute path="/history" component={History} />
         <Route path="/details" component={Details} />
         <Route path="/editProfile" component={EditProfile} />
         <ProtectedRoute path="/userpanel" component={Userpanel} />

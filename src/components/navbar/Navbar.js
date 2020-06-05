@@ -16,6 +16,7 @@ class Navbar extends Component{
                 </Link>
                 </div>
                 <div className="navbar-nav">
+
                     <Link className="nav-link ml-5" to="praca">Oferty pracy</Link>
                     <Link className="nav-link ml-5" to="about">O nas</Link>
                     <Link className="nav-link ml-5" to="userpanel">Moje konto</Link>
@@ -27,9 +28,9 @@ class Navbar extends Component{
                        .catch(err => console.log(err));
                       auth.logout();
                       Cookies.remove('userName');
+                      window.location.reload();
                     }}>Logout</button>
                     </div>
-
                 </div>
               </div>
             </nav>

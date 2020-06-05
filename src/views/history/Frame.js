@@ -1,47 +1,50 @@
-import React, { Component } from "react";
+import React from "react";
+import axios from "axios";
 
-class Frame extends Component {
-  render() {
-    var data = require("./Data/data.json");
-    //console.log(data["info"][0]["jobName"]);
-    return (
-      <div className="container mt-2" id="history-frame">
-        {data.info.map((item) => (
-          <div className="row">
-            <div className="card mb-3 col-100" >
-              <div className="row no-gutters">
+export function Frame(date) {
+  let advertisementID = date.advertisementID;
+  let title = date.title;
+  let description = date.description;
+  let dateTime = date.dateTime;
+  let city = date.city;
+  const timeYearMonthDay = dateTime[2] + "." + dateTime[1] + "." + dateTime[0];
 
-                <div className="col-md-100">
-                  <div className="card-body">
+  function deleteOffer() {
+    console.log(advertisementID);
 
-                  <p className="card-text">
-                      <small className="text-muted">
-                        {item.commision}
-                      </small>
-                    </p>
+    const headers = {
+      "Content-Type": "application/json",
+    };
 
-                    <h4 className="card-title">
-                      <a href="/details">{item.jobName}</a>
-                    </h4>
-                    <h5 className="card-title">
-                      <a href="#">{item.companyName}</a>
-                    </h5>
-                    <p className="card-text">{item.city}</p>
-                    <p className="card-text">{item.description}</p>
-                    <p className="card-text">
-                      <small className="text-muted">
-                        {item.offerDate}
-                      </small>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    );
+    axios
+      .delete(
+        "http://149.156.146.249:60021/api/advertisements?id=" + advertisementID,
+        {
+          headers: headers,
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        if (res.data == true) window.location.reload(false);
+      })
+      .catch((err) => console.log(err));
   }
-}
 
-export default Frame;
+  return (
+    <div className="card mt-3 mb-3">
+      <div className="card-header">{title}</div>
+      <div className="card-body">
+        <p className="card-text">
+          <h3>{description}</h3>
+        </p>
+        <p className="card-text">{city}</p>
+        <p className="card-text">
+          <small className="text-muted">{timeYearMonthDay}</small>
+        </p>
+        <button className="btn btn-primary" onClick={deleteOffer}>
+          Usuń ogłoszenie
+        </button>
+      </div>
+    </div>
+  );
+}
