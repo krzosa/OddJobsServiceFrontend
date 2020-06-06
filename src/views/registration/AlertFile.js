@@ -80,6 +80,7 @@ export function AlertFile(data, email, password, passwordRepeat, checked,userNam
   } else {
     alert("Zarejestrowano");
     Cookies.set('userName',userName);
+    window.location.reload(true);
     GetUser();
     auth.login(() => {
       props.history.push("/userpanel");
