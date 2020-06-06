@@ -40,9 +40,13 @@ class Login extends React.Component {
           headers: headers,
           withCredentials: true,
         })
-        .then((res) => AlertFile(res, this.props, data))
+        .then((res) => {
+          AlertFile(res, this.props, data)
+          setTimeout(function(){ window.location.reload(); }, 50);
+        } )
         .catch((err) => {
           if (err.length > 0) console.log(err);
+          setTimeout(function(){ window.location.reload(); }, 50);
         });
     }
   };
@@ -82,10 +86,7 @@ class Login extends React.Component {
               </div>
 
               <div className="col-12 text-center my-5">
-                <button
-                  type="submit"
-                  className="btn btn-info btn-lg mx-2 col-8 col-md-7 col-lg-4"
-                >
+                <button type="submit" className="btn btn-info btn-lg mx-2 col-8 col-md-7 col-lg-4">
                   Zaloguj
                 </button>
               </div>
