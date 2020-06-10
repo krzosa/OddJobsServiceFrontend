@@ -2,6 +2,52 @@ import React, { Component } from "react";
 import axios from 'axios';
  
 import user from '../../Auth/User'
+
+class ErrorBoundary extends Component {
+  state = {
+    hasError: false
+  };
+
+  static getDerivedStateFromError(error) {
+    console.log("getDerivedStateFromError");
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, info) {
+    console.log("componentDidCatch");
+    console.log(error, info);
+  }
+
+  render() {
+    console.log("render");
+    if (this.state.hasError) {
+      return <div>Coś poszło nie tak...</div>;
+    } else {
+      return this.props.children;
+    }
+  }
+}
+
+class Message extends Component {
+  componentDidMount = () => {
+    if (this.props.content === "") {
+      throw Error("ups");
+    }
+  };
+
+  report = () => {
+    try {
+    } catch {}
+    // api.doReport();
+  };
+
+  render() {
+    return (
+      <div style={{ borderBottom: "2px solid #eee" }}>{this.props.content}</div>
+    );
+  }
+}
+
  
 class AddOffers extends Component{
   state = {
@@ -55,7 +101,6 @@ class AddOffers extends Component{
     this.setState({reward: e.target.value});
   }
  
-
  
   handleAddOffer(e){
       e.preventDefault();
@@ -87,7 +132,7 @@ class AddOffers extends Component{
         withCredentials: true
       },
       )
-      .then(res => console.log(res))
+      .then(alert("Ogłoszenie dodane"))
       .catch(err => console.log(err))
  
     }
@@ -95,7 +140,9 @@ class AddOffers extends Component{
     render(){
         return(    
             <div className="container content mt-5 mb-5">
+               {/* <ErrorBoundary> */}
               <form onSubmit={this.handleAddOffer}>
+              {/* </ErrorBoundary> */}
                   <div className="form-group col-12 col-md-10 col-lg-6">
                     <label forHtml="jobName" class="mt-2">Nazwa pracy:</label>
                     <input type="text" className="form-control" id="jobName" onChange={this.handleChangeTitle}></input>
